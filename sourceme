@@ -1,0 +1,9 @@
+export WORK_HOME=/home/meyou/practice/verification
+export UVM_HOME=/home/meyou/uvm-1.2
+export WORKAREA=/home/meyou/practice/verification/UVM/sim
+
+alias cdtest='cd $WORK_HOME/sim/test'
+alias cdtb='cd $WORK_HOME/sim/tb'
+alias cdout='cd $WORK_HOME/sim/out'
+alias cdenv='cd $WORK_HOME/sim/env'
+alias fs='cd $WORK_HOME/sim/out/build ;verdi'

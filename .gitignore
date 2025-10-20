@@ -1,0 +1,41 @@
+# 仿真文件
+*.log
+*.vcd
+*.fsdb
+*.shm
+*.vpd
+*.wlf
+*.ucdb
+*.rpt
+*.dmp
+
+# 编译产物
+*.o
+*.so
+*.a
+work/
+INCA_libs/
+vsim_stacktrace.vstf
+.vsim/
+
+# 临时文件
+*.tmp
+*.bak
+*~
+.DS_Store
+Thumbs.db
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 文档生成物
+doc/_build/
+*.pdf
+*.docx
+
+# 备份文件
+backup/
+tmp/
