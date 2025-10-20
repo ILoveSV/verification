@@ -17,6 +17,22 @@ work/
 INCA_libs/
 vsim_stacktrace.vstf
 .vsim/
+csrc/
+simv*
+simv.daidir/
+DVEfiles/
+urgReport/
+verdiLog/
+novas.*
+*.key
+
+# VCS 相关
+*.daidir/
+*.tb.daidir/
+*.vdb/
+*.h
+*.c
+*.exe
 
 # 临时文件
 *.tmp
@@ -39,3 +55,7 @@ doc/_build/
 # 备份文件
 backup/
 tmp/
+
+# 特定目录
+out/
+lib/
