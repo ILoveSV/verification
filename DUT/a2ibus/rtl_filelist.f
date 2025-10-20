@@ -1,0 +1,9 @@
++incdir+$WORK_HOME/rtl
+$WORK_HOME/rtl/DES.sv
+$WORK_HOME/rtl/FIFO.sv
+$WORK_HOME/rtl/apb_assertion.sv
+$WORK_HOME/rtl/apb_bus.sv
+$WORK_HOME/rtl/dut.sv
+$WORK_HOME/rtl/icb_assertion.sv
+$WORK_HOME/rtl/icb_bus.sv
+$WORK_HOME/rtl/top.sv

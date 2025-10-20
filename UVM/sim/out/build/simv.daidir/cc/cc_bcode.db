@@ -1,0 +1,4 @@
+sid multiplier_16x16_0000
+bcid 0 0 WIDTH,16 CALL_ARG_VAL,2,0 RET
+sid multiplier_32x32_0000
+bcid 1 0 WIDTH,16 CALL_ARG_VAL,2,0 RET

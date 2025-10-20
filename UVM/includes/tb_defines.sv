@@ -1,0 +1,3 @@
+`define ADDR_WIDTH 16
+`define DATA_WIDTH 16
+`define APB_SRAM_SIZE 64

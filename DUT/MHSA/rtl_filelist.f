@@ -1,12 +1,12 @@
-+incdir+$WORK_HOME/rtl
-$WORK_HOME/rtl/MAC.sv
-$WORK_HOME/rtl/Multiplier.sv
-$WORK_HOME/rtl/Quantize.sv
-$WORK_HOME/rtl/Softmax.sv
-$WORK_HOME/rtl/0-MHSA_top.sv
-$WORK_HOME/rtl/1-QKV.sv
-$WORK_HOME/rtl/2-SDPA.sv
-$WORK_HOME/rtl/3-Concat.sv
-$WORK_HOME/rtl/4-FinalLinear.sv
++incdir+$WORK_HOME/DUT/MHSA
+$WORK_HOME/DUT/MHSA/MAC.sv
+$WORK_HOME/DUT/MHSA/Multiplier.sv
+$WORK_HOME/DUT/MHSA/Quantize.sv
+$WORK_HOME/DUT/MHSA/Softmax.sv
+$WORK_HOME/DUT/MHSA/0-MHSA_top.sv
+$WORK_HOME/DUT/MHSA/1-QKV.sv
+$WORK_HOME/DUT/MHSA/2-SDPA.sv
+$WORK_HOME/DUT/MHSA/3-Concat.sv
+$WORK_HOME/DUT/MHSA/4-FinalLinear.sv
 
 
