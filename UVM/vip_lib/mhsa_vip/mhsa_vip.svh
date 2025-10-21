@@ -13,11 +13,11 @@
     `include "qkv_driver.svh"
 
 //other components
-    `include "mhsa_monitor.sv"
+//    `include "mhsa_monitor.sv"
     `include "mhsa_monitor.svh"
-    `include "mhsa_mstr_sequencer.sv"
+//    `include "mhsa_mstr_sequencer.sv"
     `include "mhsa_mstr_sequencer.svh"
-    `include "mhsa_mstr_agent.sv"
+//    `include "mhsa_mstr_agent.sv"
     `include "mhsa_mstr_agent.svh"
 
 
