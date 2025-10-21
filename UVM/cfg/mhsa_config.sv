@@ -1,8 +1,8 @@
 `ifndef MHSA_CONFIG_SV
 `define MHSA_CONFIG_SV
 
-class mhsa_cfg extends functional_layer_config;
-  `uvm_object_utils(mhsa_cfg)
+class mhsa_config extends functional_layer_config;
+  `uvm_object_utils(mhsa_config)
   
   // === MHSA架构参数 ===
   int matrix_size = 8;                   // 矩阵大小 (N x N)
@@ -60,7 +60,7 @@ class mhsa_cfg extends functional_layer_config;
   bit enable_accumulator_coverage = 1;   // 累加器覆盖率
 
   // Constructor
-  function new(string name = "mhsa_cfg");
+  function new(string name = "mhsa_config");
     super.new(name);
     // 初始化配置组件
     mhsa_mstr_agnt_cfg = new("mhsa_mstr_agnt_cfg");

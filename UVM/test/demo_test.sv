@@ -34,7 +34,7 @@ class demo_test extends mhsa_base_test;
     //   write_data(4'h5);
       end
       begin
-        #190000;
+        #10000;
       end
 
    join 

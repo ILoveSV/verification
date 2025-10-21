@@ -1,4 +1,3 @@
-import uvm_pkg::*;
 class mhsa_mstr_agent_config extends uvm_object;
   `uvm_object_utils(mhsa_mstr_agent_config)
 

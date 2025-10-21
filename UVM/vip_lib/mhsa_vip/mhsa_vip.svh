@@ -1,5 +1,5 @@
-`ifndef MHSA_SVH
-`define MHSA_SVH
+`ifndef MHSA_VIP_SVH
+`define MHSA_VIP_SVH
 
     `include "mhsa_mstr_agent_config.sv"
 //sequences and transactions
@@ -21,4 +21,4 @@
     `include "mhsa_mstr_agent.svh"
 
 
-`endif // MHSA_SVH
+`endif // MHSA_VIP_SVH

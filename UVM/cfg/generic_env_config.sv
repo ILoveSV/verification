@@ -1,6 +1,3 @@
-`ifndef GENERIC_ENV_CONFIG_SV
-`define GENERIC_ENV_CONFIG_SV
-
 class generic_env_config extends uvm_object;
   `uvm_object_utils(generic_env_config)
   
@@ -9,11 +6,6 @@ class generic_env_config extends uvm_object;
   bit enable_scb = 1;                    // 记分板使能
   bit enable_reg_prediction = 1;         // 寄存器预测使能
   bit enable_reg_adapter = 1;            // 寄存器适配器使能
-  
-  // === 通用统计 ===
-  int check_count = 0;                   // 检查计数
-  int error_count = 0;                   // 错误计数
-  int warning_count = 0;                 // 警告计数
   
   // === 超时控制 ===
   time timeout_ns = 10_000_000;          // 10ms默认超时
@@ -26,7 +18,7 @@ class generic_env_config extends uvm_object;
   // === 序列控制 ===
   int default_sequence_count = 100;      // 默认序列次数
   string default_sequence_type = "base"; // 默认序列类型
-  
+
   // Constructor
   function new(string name = "generic_env_config");
     super.new(name);
@@ -47,12 +39,10 @@ class generic_env_config extends uvm_object;
   
   // 配置信息打印
   virtual function string convert2string();
-    string s = $sformatf("Generic Config [%s]:\n", get_name());
+    string s = $sformatf("\nGeneric Config [%s]:\n", get_name());
     s = {s, $sformatf("  enable_cov: %0d, enable_scb: %0d\n", enable_cov, enable_scb)};
-    s = {s, $sformatf("  timeout_ns: %0t, checks: %0d, errors: %0d\n", timeout_ns, check_count, error_count)};
+    s = {s, $sformatf("  timeout_ns: %0t\n", timeout_ns)};
     return s;
   endfunction
 
 endclass
-
-`endif

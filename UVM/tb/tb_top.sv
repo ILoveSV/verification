@@ -1,5 +1,8 @@
-`include "uvm_macros.svh"
 module top_tb;
+  `include "uvm_macros.svh"
+  import uvm_pkg::*;
+  import mhsa_env_pkg::*;
+
   // 时钟与复位声明
   reg clk;
   reg rst_n;
@@ -76,12 +79,11 @@ module top_tb;
     uvm_config_db#(virtual apb_interface)::set(null, "*", "APB_INTF", u_mhsa_if);
     run_test();
   end
-
+  
   // 波形记录控制
   initial begin
     $fsdbDumpfile("tb.fsdb");
     $fsdbDumpvars(0, top_tb);  // 记录所有层级信号
     $fsdbDumpMDA();            // 记录多维数组
   end
-
 endmodule : top_tb

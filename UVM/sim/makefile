@@ -25,7 +25,8 @@ TB_FILES        += -f ${WORK_HOME}/DUT/MHSA/rtl_filelist.f
 CFLAGS          += -I${DPI_LIB_PATH}
 LDFLAGS         += -L${DPI_LIB_PATH} -l${DPI_LIB_NAME} -ldl -Wl,-rpath=${DPI_LIB_PATH}
 
-VCS_OPTS         = -ntb_opts uvm-1.2 -full64 -sverilog -CFLAGS "-m64" -LDFLAGS "-m64 -lpthread" -assertdebug -debug_access+pp -kdb -lca -incremental
+VCS_OPTS         = -ntb_opts uvm-1.2 -full64 -sverilog -CFLAGS "-m64" -LDFLAGS "-m64 -lpthread" -lca
+VCS_OPTS        += -debug_access+pp -kdb 
 
 # 生成 DPI 库
 ${DPI_LIB_FILE}: ${DPI_SRCS}

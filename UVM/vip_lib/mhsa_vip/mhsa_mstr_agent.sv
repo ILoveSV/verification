@@ -17,7 +17,7 @@ class mhsa_mstr_agent extends uvm_agent;
     super.build_phase(phase);
 
     if (!uvm_config_db#(mhsa_mstr_agent_config)::get(
-        this, "", "APB_MSTR_AGNT_CFG", mhsa_mstr_agnt_cfg)) begin
+        this, "", "MHSA_MSTR_AGNT_CFG", mhsa_mstr_agnt_cfg)) begin
       `uvm_fatal("AGENT_CFG_ERR", 
           "Failed to get mhsa_mstr_agnt_cfg from uvm_config_db")
     end
