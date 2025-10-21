@@ -1,14 +1,14 @@
-class apb_mstr_agent extends uvm_agent;
-  `uvm_component_utils(apb_mstr_agent)
+class mhsa_mstr_agent extends uvm_agent;
+  `uvm_component_utils(mhsa_mstr_agent)
 
   // Configuration subcomponents
   mhsa_mstr_agent_config  mhsa_mstr_agnt_cfg;
   apb_master_driver      apb_mstr_drvr;
-  apb_monitor            apb_mntr;
-  apb_mstr_sequencer     apb_mstr_seqr;
+  mhsa_monitor            apb_mntr;
+  mhsa_mstr_sequencer     apb_mstr_seqr;
 
   // Constructor
-  function new(string name="apb_mstr_agent", uvm_component parent);
+  function new(string name="mhsa_mstr_agent", uvm_component parent);
     super.new(name, parent);
   endfunction : new
 
@@ -22,11 +22,11 @@ class apb_mstr_agent extends uvm_agent;
           "Failed to get mhsa_mstr_agnt_cfg from uvm_config_db")
     end
 
-    apb_mntr = apb_monitor::type_id::create("apb_mntr", this);
+    apb_mntr = mhsa_monitor::type_id::create("apb_mntr", this);
 
     if (mhsa_mstr_agnt_cfg.is_active == UVM_ACTIVE) begin
       apb_mstr_drvr = apb_master_driver::type_id::create("apb_mstr_drvr", this);
-      apb_mstr_seqr = apb_mstr_sequencer::type_id::create("apb_mstr_seqr", this);
+      apb_mstr_seqr = mhsa_mstr_sequencer::type_id::create("apb_mstr_seqr", this);
     end
   endfunction : build_phase
 
@@ -44,4 +44,4 @@ class apb_mstr_agent extends uvm_agent;
     apb_mntr.mhsa_mstr_agnt_cfg = mhsa_mstr_agnt_cfg;
   endfunction : connect_phase
 
-endclass : apb_mstr_agent
+endclass : mhsa_mstr_agent

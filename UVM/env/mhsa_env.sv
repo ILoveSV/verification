@@ -5,7 +5,7 @@ class mhsa_env extends uvm_env;
   `uvm_component_utils(mhsa_env);
 
   // Configuration subcomponents
-  apb_mstr_agent i_agt;
+  mhsa_mstr_agent i_agt;
   mhsa_scb      scb;
   mhsa_cfg      w_cfg;
 
@@ -33,7 +33,7 @@ class mhsa_env extends uvm_env;
 //   uvm_config_db#(mhsa_config)::set(this, "scb", "cfg", cfg);
 
    // Build components
-   i_agt = apb_mstr_agent::type_id::create("i_agt",this);
+   i_agt = mhsa_mstr_agent::type_id::create("i_agt",this);
    scb = mhsa_scb::type_id::create("scb",this);
    i_agt_drv_scb_fifo = new("i_agt_drv_scb_fifo",this);
    i_agt_mon_scb_fifo = new("i_agt_mon_scb_fifo",this);

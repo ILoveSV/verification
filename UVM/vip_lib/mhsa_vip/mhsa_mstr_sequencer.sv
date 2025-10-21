@@ -1,9 +1,9 @@
 
-class apb_mstr_sequencer extends uvm_sequencer#(mhsa_base_seq_item,mhsa_base_seq_item);
-  `uvm_component_utils(apb_mstr_sequencer)
+class mhsa_mstr_sequencer extends uvm_sequencer#(mhsa_base_seq_item,mhsa_base_seq_item);
+  `uvm_component_utils(mhsa_mstr_sequencer)
 
   // Constructor
-  function new(string name="apb_mstr_sequencer",uvm_component parent);
+  function new(string name="mhsa_mstr_sequencer",uvm_component parent);
     super.new(name,parent);
   endfunction
 
@@ -17,4 +17,4 @@ class apb_mstr_sequencer extends uvm_sequencer#(mhsa_base_seq_item,mhsa_base_seq
     super.connect_phase(phase);
   endfunction
 
-endclass:apb_mstr_sequencer
+endclass:mhsa_mstr_sequencer

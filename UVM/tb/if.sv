@@ -57,7 +57,15 @@ clocking cb @(posedge PCLK);
     input result;
 
  // MACs
-    // input
+/*
+grep -r -l "mhsa_base_sequence" . --include="*.sv" | xargs sed -i 's/mhsa_base_sequence/mhsa_base_sequence/g'
+grep -r -l "mhsa_mstr_agent" . --include="*.sv" | xargs sed -i 's/mhsa_mstr_agent/mhsa_mstr_agent/g'
+grep -r -l "" . --include="*.sv" | xargs sed -i 's//mhsa_/g'
+grep -r -l "" . --include="*.sv" | xargs sed -i 's//mhsa_/g'
+grep -r -l "" . --include="*.sv" | xargs sed -i 's//mhsa_/g'
+grep -r -l "" . --include="*.sv" | xargs sed -i 's//mhsa_/g'
+*/
+ // input
         output Q_32x16x16x32;
         output K_32x16x16x32;
         output Q_32x32x32x16;

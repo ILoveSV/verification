@@ -3,8 +3,8 @@
         input string filename
     );
 */ 
-class apb_monitor extends uvm_monitor;
-  `uvm_component_utils(apb_monitor)
+class mhsa_monitor extends uvm_monitor;
+  `uvm_component_utils(mhsa_monitor)
 
   // Configuration subcomponents
   mhsa_mstr_agent_config   mhsa_mstr_agnt_cfg;
@@ -12,7 +12,7 @@ class apb_monitor extends uvm_monitor;
   uvm_analysis_port#(mhsa_base_seq_item) ap;
 
   // Constructor
-  function new(string name ="apb_monitor", uvm_component parent);
+  function new(string name ="mhsa_monitor", uvm_component parent);
     super.new(name,parent);
     ap = new("ap",this);
   endfunction
@@ -82,4 +82,4 @@ class apb_monitor extends uvm_monitor;
         end
   endtask : run_phase
 
-endclass : apb_monitor
+endclass : mhsa_monitor
