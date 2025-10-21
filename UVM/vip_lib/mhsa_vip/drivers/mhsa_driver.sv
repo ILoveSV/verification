@@ -7,7 +7,7 @@ import "DPI-C" function void calculate_mhsa(
     input  logic signed [7:0] W_in[128][128],
     output logic signed [7:0] out_s8[32][128]
 );
-class mhsa_driver extends apb_master_driver;
+class mhsa_driver extends mhsa_master_driver;
    `uvm_component_utils(mhsa_driver)
 
   // Constructor

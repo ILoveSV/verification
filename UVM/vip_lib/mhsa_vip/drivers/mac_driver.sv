@@ -15,7 +15,7 @@ import "DPI-C" function void calculate_QKT_32x128x128x128(
     input  logic signed [7:0] K_32x128x128x128 [127:0][127:0],
     output logic signed [22:0] QKT_32x128x128x128 [32][127:0]
 );
-class mac_driver extends apb_master_driver;
+class mac_driver extends mhsa_master_driver;
    `uvm_component_utils(mac_driver)
 
   // Constructor

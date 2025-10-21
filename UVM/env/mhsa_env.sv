@@ -52,10 +52,10 @@ class mhsa_env extends uvm_env;
   virtual function void connect_phase(uvm_phase phase);
     super.connect_phase(phase);
    //mon2scb
-    i_agt.apb_mntr.ap.connect(i_agt_mon_scb_fifo.analysis_export);
+    i_agt.mhsa_mntr.ap.connect(i_agt_mon_scb_fifo.analysis_export);
     scb.act_port.connect(i_agt_mon_scb_fifo.blocking_get_export);
     //drv2scb
-    i_agt.apb_mstr_drvr.drv2scb.connect(i_agt_drv_scb_fifo.analysis_export);
+    i_agt.mhsa_mstr_drvr.drv2scb.connect(i_agt_drv_scb_fifo.analysis_export);
     scb.exp_port.connect(i_agt_drv_scb_fifo.blocking_get_export);
   endfunction
 

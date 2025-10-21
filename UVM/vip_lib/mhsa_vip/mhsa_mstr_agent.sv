@@ -3,9 +3,9 @@ class mhsa_mstr_agent extends uvm_agent;
 
   // Configuration subcomponents
   mhsa_mstr_agent_config  mhsa_mstr_agnt_cfg;
-  apb_master_driver      apb_mstr_drvr;
-  mhsa_monitor            apb_mntr;
-  mhsa_mstr_sequencer     apb_mstr_seqr;
+  mhsa_master_driver      mhsa_mstr_drvr;
+  mhsa_monitor            mhsa_mntr;
+  mhsa_mstr_sequencer     mhsa_mstr_seqr;
 
   // Constructor
   function new(string name="mhsa_mstr_agent", uvm_component parent);
@@ -22,11 +22,11 @@ class mhsa_mstr_agent extends uvm_agent;
           "Failed to get mhsa_mstr_agnt_cfg from uvm_config_db")
     end
 
-    apb_mntr = mhsa_monitor::type_id::create("apb_mntr", this);
+    mhsa_mntr = mhsa_monitor::type_id::create("mhsa_mntr", this);
 
     if (mhsa_mstr_agnt_cfg.is_active == UVM_ACTIVE) begin
-      apb_mstr_drvr = apb_master_driver::type_id::create("apb_mstr_drvr", this);
-      apb_mstr_seqr = mhsa_mstr_sequencer::type_id::create("apb_mstr_seqr", this);
+      mhsa_mstr_drvr = mhsa_master_driver::type_id::create("mhsa_mstr_drvr", this);
+      mhsa_mstr_seqr = mhsa_mstr_sequencer::type_id::create("mhsa_mstr_seqr", this);
     end
   endfunction : build_phase
 
@@ -35,13 +35,13 @@ class mhsa_mstr_agent extends uvm_agent;
     super.connect_phase(phase);
 
     if (mhsa_mstr_agnt_cfg.is_active == UVM_ACTIVE) begin
-      apb_mstr_drvr.mhsa_mstr_agnt_cfg = mhsa_mstr_agnt_cfg;
-      apb_mstr_drvr.apb_intf          = mhsa_mstr_agnt_cfg.apb_intf;
-      apb_mstr_drvr.seq_item_port.connect(apb_mstr_seqr.seq_item_export);
+      mhsa_mstr_drvr.mhsa_mstr_agnt_cfg = mhsa_mstr_agnt_cfg;
+      mhsa_mstr_drvr.apb_intf          = mhsa_mstr_agnt_cfg.apb_intf;
+      mhsa_mstr_drvr.seq_item_port.connect(mhsa_mstr_seqr.seq_item_export);
     end
 
-    apb_mntr.apb_intf          = mhsa_mstr_agnt_cfg.apb_intf;
-    apb_mntr.mhsa_mstr_agnt_cfg = mhsa_mstr_agnt_cfg;
+    mhsa_mntr.apb_intf          = mhsa_mstr_agnt_cfg.apb_intf;
+    mhsa_mntr.mhsa_mstr_agnt_cfg = mhsa_mstr_agnt_cfg;
   endfunction : connect_phase
 
 endclass : mhsa_mstr_agent

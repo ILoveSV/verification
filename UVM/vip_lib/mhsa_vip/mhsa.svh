@@ -7,7 +7,7 @@
     `include "mhsa_seq_lib.svh"
 
 //drivers
-    `include "apb_master_driver.svh"
+    `include "mhsa_master_driver.svh"
     `include "mhsa_driver.svh"
     `include "mac_driver.svh"
     `include "qkv_driver.svh"

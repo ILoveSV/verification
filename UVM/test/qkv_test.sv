@@ -8,7 +8,7 @@ class qkv_test extends mhsa_base_test;
 
   // Build Phase
  virtual function void build_phase(uvm_phase phase);
-   apb_master_driver::type_id::set_type_override(qkv_driver::get_type());
+   mhsa_master_driver::type_id::set_type_override(qkv_driver::get_type());
    mhsa_base_seq_item::type_id::set_type_override(qkv_seq_item::get_type());
    super.build_phase(phase);
   endfunction
@@ -40,7 +40,7 @@ class qkv_test extends mhsa_base_test;
    qkv_sequence wr_seq;
    wr_seq=qkv_sequence::type_id::create("wr_seq",this);
    wr_seq.write_config=write_config;
-   wr_seq.start(env.i_agt.apb_mstr_seqr);
+   wr_seq.start(env.i_agt.mhsa_mstr_seqr);
   endtask
 
 

@@ -8,7 +8,7 @@ import "DPI-C" function void calculate_QKV(
     output logic signed [7:0] result_K[32][128],
     output logic signed [7:0] result_V[32][128]
 );
-class qkv_driver extends apb_master_driver;
+class qkv_driver extends mhsa_master_driver;
    `uvm_component_utils(qkv_driver)
 
   // Constructor
