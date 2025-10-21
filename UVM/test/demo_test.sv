@@ -9,7 +9,7 @@ class demo_test extends mhsa_base_test;
   // Build Phase
  virtual function void build_phase(uvm_phase phase);
    apb_master_driver::type_id::set_type_override(mhsa_driver::get_type());
-   apb_seq_item::type_id::set_type_override(mhsa_seq_item::get_type());
+   mhsa_base_seq_item::type_id::set_type_override(mhsa_seq_item::get_type());
    super.build_phase(phase);
   endfunction
 
@@ -22,11 +22,10 @@ class demo_test extends mhsa_base_test;
  virtual task run_phase(uvm_phase phase);
    super.run_phase(phase);
    phase.raise_objection(this);
- 
    `uvm_info("demo_test",$psprintf("test-run-phase-111"),UVM_NONE)
    fork
       begin
-       write_data(4'h2);
+       write_data(4'h1);
        
     //   write_data(4'h2);
     //   #200000;

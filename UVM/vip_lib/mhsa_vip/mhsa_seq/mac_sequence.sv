@@ -1,4 +1,4 @@
-class mac_sequence extends apb_base_sequence;
+class mac_sequence extends mhsa_base_sequence;
     `uvm_object_utils_begin(mac_sequence)
       `uvm_field_int(write_config, UVM_ALL_ON)
       `uvm_field_int(matrix_value, UVM_ALL_ON)
@@ -7,7 +7,7 @@ class mac_sequence extends apb_base_sequence;
   // Configuration subcomponents
     logic [7:0] matrix_value;
     logic [3:0] write_config;
-    apb_seq_item item;
+    mhsa_base_seq_item item;
     localparam TEST_ALL_ONES      = 4'd1;
     localparam TEST_RANDOM        = 4'd2;
     localparam TEST_ZEROS         = 4'd3;
@@ -22,7 +22,7 @@ class mac_sequence extends apb_base_sequence;
 
   // Main Task
   virtual task body();
-    item = apb_seq_item::type_id::create("item");
+    item = mhsa_base_seq_item::type_id::create("item");
     
     if (!item.randomize()) begin
       `uvm_error("RAND_FAIL", "MAC item randomization failed")

@@ -1,5 +1,5 @@
-class apb_seq_item extends uvm_sequence_item;
-  `uvm_object_utils(apb_seq_item)
+class mhsa_base_seq_item extends uvm_sequence_item;
+  `uvm_object_utils(mhsa_base_seq_item)
   
   //Signal Definition
   //MHSA
@@ -38,7 +38,7 @@ class apb_seq_item extends uvm_sequence_item;
     logic signed [7:0] result_V [0:31][0:127];
 
   // UVM Standard Methods (to be overridden)
-  function new(string name = "apb_seq_item");
+  function new(string name = "mhsa_base_seq_item");
     super.new(name);
   endfunction
 

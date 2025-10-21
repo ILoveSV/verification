@@ -1,16 +1,16 @@
 `ifndef MHSA_SVH
 `define MHSA_SVH
 
+    `include "mhsa_mstr_agent_config.sv"
+//sequences and transactions
+    `include "mhsa_transactions.svh"
+    `include "mhsa_seq_lib.svh"
 
 //drivers
     `include "apb_master_driver.svh"
     `include "mhsa_driver.svh"
     `include "mac_driver.svh"
     `include "qkv_driver.svh"
-
-//sequences and transactions
-    `include "mhsa_seq_lib.svh"
-    `include "mhsa_transactions.svh"
 
 //other components
     `include "mhsa_monitor.sv"
@@ -20,6 +20,5 @@
     `include "mhsa_mstr_agent.sv"
     `include "mhsa_mstr_agent.svh"
 
-    `include "mhsa_mstr_agent_config"
 
 `endif // MHSA_SVH

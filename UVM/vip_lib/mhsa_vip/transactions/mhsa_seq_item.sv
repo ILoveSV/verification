@@ -1,4 +1,4 @@
-class mhsa_seq_item extends apb_seq_item;
+class mhsa_seq_item extends mhsa_base_seq_item;
   `uvm_object_utils(mhsa_seq_item)
 
   // Constructor

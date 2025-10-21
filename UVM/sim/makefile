@@ -7,7 +7,7 @@ VERBOSITY        = UVM_HIGH
 DPI_SRC_PATH     = ${WORK_HOME}/UVM/dpi
 DPI_SRCS         = $(wildcard ${DPI_SRC_PATH}/*.c)
 DPI_LIB_PATH     = ${WORK_HOME}/UVM/lib
-DPI_LIB_NAME     = dpi
+DPI_LIB_NAME     = dpi
 DPI_LIB_FILE     = ${DPI_LIB_PATH}/lib${DPI_LIB_NAME}.so
 DPI_INC         += $(VCS_HOME)/include
 
@@ -25,7 +25,7 @@ TB_FILES        += -f ${WORK_HOME}/DUT/MHSA/rtl_filelist.f
 CFLAGS          += -I${DPI_LIB_PATH}
 LDFLAGS         += -L${DPI_LIB_PATH} -l${DPI_LIB_NAME} -ldl -Wl,-rpath=${DPI_LIB_PATH}
 
-VCS_OPTS         = -ntb_opts uvm-1.2 -full64 -sverilog -CFLAGS "-m64" -LDFLAGS "-m64 -lpthread" -assertdebug -debug_access+pp -kdb -lca 
+VCS_OPTS         = -ntb_opts uvm-1.2 -full64 -sverilog -CFLAGS "-m64" -LDFLAGS "-m64 -lpthread" -assertdebug -debug_access+pp -kdb -lca -incremental
 
 # 生成 DPI 库
 ${DPI_LIB_FILE}: ${DPI_SRCS}

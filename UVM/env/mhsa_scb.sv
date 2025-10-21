@@ -3,11 +3,11 @@ class mhsa_scb extends uvm_scoreboard;
   `uvm_component_utils(mhsa_scb);
   
   // Configuration subcomponents
-  apb_seq_item expect_queue[$];
+  mhsa_base_seq_item expect_queue[$];
   semaphore queue_sem = new(1);
   
-  uvm_blocking_get_port #(apb_seq_item) exp_port;
-  uvm_blocking_get_port #(apb_seq_item) act_port;
+  uvm_blocking_get_port #(mhsa_base_seq_item) exp_port;
+  uvm_blocking_get_port #(mhsa_base_seq_item) act_port;
   
   int match_count = 0;
   int mismatch_count = 0;
@@ -35,7 +35,7 @@ class mhsa_scb extends uvm_scoreboard;
 
   // Process Transaction Tasks
   task process_expected_transactions();
-    apb_seq_item get_expect;
+    mhsa_base_seq_item get_expect;
     forever begin
       exp_port.get(get_expect);
       queue_sem.get(1);
@@ -45,7 +45,7 @@ class mhsa_scb extends uvm_scoreboard;
   endtask 
 
   task process_actual_transactions();
-    apb_seq_item get_actual, tmp_tran ;
+    mhsa_base_seq_item get_actual, tmp_tran ;
     forever begin
       act_port.get(get_actual);
 
@@ -76,7 +76,7 @@ class mhsa_scb extends uvm_scoreboard;
   endtask
 
   //Compare Task
-  function bit compare_transactions(apb_seq_item expected, apb_seq_item actual);
+  function bit compare_transactions(mhsa_base_seq_item expected, mhsa_base_seq_item actual);
     bit status = 1;
         if (expected == null || actual == null) begin
         `uvm_error("SCB/CMP", "empty transaction detected!")
@@ -89,13 +89,13 @@ class mhsa_scb extends uvm_scoreboard;
     end
 
  //   if (uvm_report_enabled(UVM_HIGH, UVM_INFO, "SCOREBOARD"))
-    begin
+/*    begin
       `uvm_info("SCOREBOARD", "actual:", UVM_HIGH)
       actual.print_arrays("DUT_ITEM");
       
       `uvm_info("SCOREBOARD", "expected:", UVM_HIGH)
       expected.print_arrays("REF_ITEM");
-    end
+    end*/
 
     return status;
   endfunction

@@ -7,9 +7,9 @@ class apb_monitor extends uvm_monitor;
   `uvm_component_utils(apb_monitor)
 
   // Configuration subcomponents
-  apb_mstr_agent_config   apb_mstr_agnt_cfg;
+  mhsa_mstr_agent_config   mhsa_mstr_agnt_cfg;
   virtual apb_interface   apb_intf;
-  uvm_analysis_port#(apb_seq_item) ap;
+  uvm_analysis_port#(mhsa_base_seq_item) ap;
 
   // Constructor
   function new(string name ="apb_monitor", uvm_component parent);
@@ -30,13 +30,13 @@ class apb_monitor extends uvm_monitor;
   // Main Task
   /*QKV
   virtual task run_phase(uvm_phase phase);
-    apb_seq_item item;
+    mhsa_base_seq_item item;
     super.run_phase(phase); 
      #45000;
      forever begin  
          @(apb_intf.cb);
          `uvm_info("mon",$psprintf("result monitored!"),UVM_NONE)
-         item=apb_seq_item::type_id::create("item"); 
+         item=mhsa_base_seq_item::type_id::create("item"); 
          item.result_Q <= apb_intf.result_Q;
          item.result_K <= apb_intf.result_K;
          item.result_V <= apb_intf.result_V;
@@ -49,12 +49,12 @@ class apb_monitor extends uvm_monitor;
   */
   /*MAC
   virtual task run_phase(uvm_phase phase);
-    apb_seq_item item;
+    mhsa_base_seq_item item;
     super.run_phase(phase); 
      forever begin  
          @(apb_intf.cb);
          `uvm_info("mon",$psprintf("result monitored!"),UVM_NONE)
-         item=apb_seq_item::type_id::create("item"); 
+         item=mhsa_base_seq_item::type_id::create("item"); 
          item.weight_in <= apb_intf.weight_in;
          item.QKT_32x16x16x32 <= apb_intf.QKT_32x16x16x32;
          item.QKT_32x32x32x16 <= apb_intf.QKT_32x32x32x16;
@@ -67,13 +67,13 @@ class apb_monitor extends uvm_monitor;
   endtask : run_phase
   */
   virtual task run_phase(uvm_phase phase);
-    apb_seq_item item;
+    mhsa_base_seq_item item;
     super.run_phase(phase); 
      #187000;
      forever begin  
          @(apb_intf.cb);
          `uvm_info("mon",$psprintf("result monitored!"),UVM_NONE)
-         item=apb_seq_item::type_id::create("item"); 
+         item=mhsa_base_seq_item::type_id::create("item"); 
          item.result <= apb_intf.result;
          @(apb_intf.cb);
          ap.write(item);

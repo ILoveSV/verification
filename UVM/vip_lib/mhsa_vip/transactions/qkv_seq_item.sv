@@ -1,4 +1,4 @@
-class qkv_seq_item extends apb_seq_item;
+class qkv_seq_item extends mhsa_base_seq_item;
   `uvm_object_utils(qkv_seq_item)
 
   function new(string name = "qkv_seq_item");

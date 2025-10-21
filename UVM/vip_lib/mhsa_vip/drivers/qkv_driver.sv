@@ -28,7 +28,7 @@ class qkv_driver extends apb_master_driver;
   
   // Run Phase
   virtual task run_phase(uvm_phase phase);
-    apb_seq_item item;
+    mhsa_base_seq_item item;
     apb_intf.reset_intf();
 
       forever begin
@@ -42,7 +42,7 @@ class qkv_driver extends apb_master_driver;
   endtask
 
   // Other Tasks
-  task wr_data(input apb_seq_item item);
+  task wr_data(input mhsa_base_seq_item item);
     @(apb_intf.cb);
 
     apb_intf.cb.X_in  <= item.X_in;
@@ -54,7 +54,7 @@ class qkv_driver extends apb_master_driver;
 
 
 
-task cal_qkv(apb_seq_item item);
+task cal_qkv(mhsa_base_seq_item item);
 
   calculate_QKV(
     item.X_in,

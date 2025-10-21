@@ -1,4 +1,4 @@
-class mac_seq_item extends apb_seq_item;
+class mac_seq_item extends mhsa_base_seq_item;
   `uvm_object_utils(mac_seq_item)
 
   // Constructor

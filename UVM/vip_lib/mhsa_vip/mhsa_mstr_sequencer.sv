@@ -1,5 +1,5 @@
 
-class apb_mstr_sequencer extends uvm_sequencer#(apb_seq_item,apb_seq_item);
+class apb_mstr_sequencer extends uvm_sequencer#(mhsa_base_seq_item,mhsa_base_seq_item);
   `uvm_component_utils(apb_mstr_sequencer)
 
   // Constructor

@@ -1,10 +1,8 @@
 `include "uvm_macros.svh"
-
 module top_tb;
   // 时钟与复位声明
   reg clk;
   reg rst_n;
-
   // 接口实例化与DUT连接
   apb_interface u_mhsa_if(clk);
   

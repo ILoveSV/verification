@@ -35,7 +35,7 @@ class mac_driver extends apb_master_driver;
   
   // Run Phase
   virtual task run_phase(uvm_phase phase);
-    apb_seq_item item;
+    mhsa_base_seq_item item;
     apb_intf.reset_intf();
 
       forever begin
@@ -49,7 +49,7 @@ class mac_driver extends apb_master_driver;
   endtask
 
   // Other Tasks
-  task wr_data(input apb_seq_item item);
+  task wr_data(input mhsa_base_seq_item item);
     @(apb_intf.cb);
 
     apb_intf.cb.Q_32x16x16x32  <= item.Q_32x16x16x32;
@@ -62,7 +62,7 @@ class mac_driver extends apb_master_driver;
 
 
 
-task cal_mac(apb_seq_item mac_item);
+task cal_mac(mhsa_base_seq_item mac_item);
 
 
   // 调用32x16x16x32计算

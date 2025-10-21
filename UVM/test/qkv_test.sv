@@ -9,7 +9,7 @@ class qkv_test extends mhsa_base_test;
   // Build Phase
  virtual function void build_phase(uvm_phase phase);
    apb_master_driver::type_id::set_type_override(qkv_driver::get_type());
-   apb_seq_item::type_id::set_type_override(qkv_seq_item::get_type());
+   mhsa_base_seq_item::type_id::set_type_override(qkv_seq_item::get_type());
    super.build_phase(phase);
   endfunction
 
