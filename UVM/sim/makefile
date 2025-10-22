@@ -1,4 +1,4 @@
-export TEST_NAME ?= demo_test
+export TEST_NAME ?= ahbram_smoke_test
 export SEED      ?=
 export COV       ?= off
 VERBOSITY        = UVM_HIGH
@@ -20,8 +20,9 @@ RUN_LOG_FILE   = ${TEST_OUT_PATH}/${TEST_NAME}.log
 
 # 编译和运行选项
 UVM_TESTNAME     = ${TEST_NAME}
-TB_FILES        += -f ${WORK_HOME}/UVM/tb/tb_filelist.f
-TB_FILES        += -f ${WORK_HOME}/DUT/MHSA/rtl_filelist.f
+TB_FILES        += -f ${WORK_HOME}/UVM/tb/ahbram_filelist.f
+#TB_FILES        += -f ${WORK_HOME}/DUT/MHSA/rtl_filelist.f
+TB_FILES        += ${WORK_HOME}/DUT/AHBRAM/ahb_blockram_32.v
 CFLAGS          += -I${DPI_LIB_PATH}
 LDFLAGS         += -L${DPI_LIB_PATH} -l${DPI_LIB_NAME} -ldl -Wl,-rpath=${DPI_LIB_PATH}
 
