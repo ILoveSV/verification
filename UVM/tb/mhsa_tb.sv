@@ -79,11 +79,12 @@ module top_tb;
     uvm_config_db#(virtual apb_interface)::set(null, "*", "APB_INTF", u_mhsa_if);
     run_test();
   end
-  
+ /* 
   // 波形记录控制
   initial begin
-    $fsdbDumpfile("tb.fsdb");
+    $fsdbDumpfile("mhsa.fsdb");
     $fsdbDumpvars(0, top_tb);  // 记录所有层级信号
     $fsdbDumpMDA();            // 记录多维数组
   end
+*/
 endmodule : top_tb

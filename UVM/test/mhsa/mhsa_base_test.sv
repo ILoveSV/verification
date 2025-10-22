@@ -1,4 +1,3 @@
-import mhsa_pkg::*; 
 class mhsa_base_test extends uvm_test;
  `uvm_component_utils(mhsa_base_test)
 

@@ -1,5 +1,5 @@
 
-module ahbram_tb;
+module top_tb;
   import uvm_pkg::*;
   `include "uvm_macros.svh"
   import ahbram_env_pkg::*;
@@ -44,6 +44,9 @@ module ahbram_tb;
     uvm_config_db#(virtual ahbram_if)::set(uvm_root::get(), "uvm_test_top.env.virt_sqr", "vif", ahbram_if);
     run_test();
   end
-
-
+/*
+  initial begin
+    $fsdbDumpfile("ahbram.fsdb");
+    $fsdbDumpvars(0, ahbram_tb);
+  end*/
 endmodule

@@ -2,9 +2,10 @@ export WORK_HOME=/home/meyou/practice/verification
 export UVM_HOME=/home/meyou/uvm-1.2
 export WORKAREA=/home/meyou/practice/verification/UVM/sim
 
-alias cdtest='cd $WORK_HOME/UVM/test'
 alias cdtb='cd $WORK_HOME/UVM/tb'
-alias wdg='cd $WORK_HOME/UVM/tmp/0_uvm'
-alias uvm='cd $WORK_HOME/UVM'
-alias fs='cd $WORK_HOME/UVM/sim/out/build ;verdi'
+alias test='cd $WORK_HOME/UVM/sim/out/test'
+alias fs='cd $WORK_HOME/UVM/sim ;verdi'
 alias mk='cd $WORK_HOME/UVM/sim ; make run'
+alias jm='python3 $WORK_HOME/UVM/script/jm.py'
+alias run='python3 $WORK_HOME/UVM/script/run.py -t'
+alias rpt='python3 $WORK_HOME/UVM/script/rpt.py -p'

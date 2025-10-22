@@ -1,7 +1,32 @@
-export TEST_NAME ?= ahbram_smoke_test
-export SEED      ?=
+#export TEST_NAME ?= demo_test
+#export TEST_DUT  ?= mhsa
+export TEST_NAME ?= ahbram_diff_haddr_test
+export TEST_DUT  ?= ahbram
+
+export SEED      ?= 1
+VERBOSITY         = UVM_HIGH
+
+# 波形配置
+export WAVE          ?= fsdb
+export GUI           ?= off
+export MEM           ?= off
+export WAVE_FILE     ?= ${TEST_OUT_PATH}/${TEST_NAME}_${SEED}.fsdb
+SCRIPT_PATH           = ${WORK_HOME}/UVM/script
+
+ifeq (${WAVE}, fsdb)
+VCS_RUN_OPTS += +fsdb+autoflush +fsdbfile+${WAVE_FILE} +fsdb+force
+VCS_RUN_OPTS += -ucli -do ${SCRIPT_PATH}/wave_fsdb.do
+endif
+
+# 覆盖率配置
 export COV       ?= off
-VERBOSITY        = UVM_HIGH
+export CM_OPTS   ?= line+branch+cond+tgl+assert+fsm
+CM_NAME           = $(TEST_NAME)_$(SEED)
+CM_DIR            = $(COV_OUT_PATH)/$(CM_NAME)
+ifeq (${COV}, on)
+VCS_OPTS += -cm ${CM_OPTS} -cm_tgl portsonly -cm_dir $(CM_DIR) -cm_name $(CM_NAME)
+VCS_RUN_OPTS += -cm ${CM_OPTS} -cm_tgl portsonly -cm_dir $(CM_DIR) -cm_name $(CM_NAME)
+endif
 
 # DPI 配置
 DPI_SRC_PATH     = ${WORK_HOME}/UVM/dpi
@@ -15,14 +40,22 @@ DPI_INC         += $(VCS_HOME)/include
 WORKAREA         = ${WORK_HOME}/UVM/sim
 OUT_STEM         = ${WORKAREA}/out
 BUILD_OUT_PATH   = ${OUT_STEM}/build
-TEST_OUT_PATH    = ${OUT_STEM}/test/${TEST_NAME}
-RUN_LOG_FILE   = ${TEST_OUT_PATH}/${TEST_NAME}.log
+COV_OUT_PATH     = ${OUT_STEM}/coverage/$(TEST_DUT)
+TEST_OUT_PATH    = ${OUT_STEM}/test/${TEST_NAME}_${SEED}
+RUN_LOG_FILE     = ${TEST_OUT_PATH}/${TEST_NAME}_${SEED}.log
+
+# 编译源文件选项
+ifeq (${TEST_DUT}, mhsa)
+TB_FILES        += -f ${WORK_HOME}/UVM/tb/mhsa_filelist.f
+TB_FILES        += -f ${WORK_HOME}/DUT/MHSA/rtl_filelist.f
+else ifeq (${TEST_DUT}, ahbram)
+TB_FILES        += -f ${WORK_HOME}/UVM/tb/ahbram_filelist.f
+TB_FILES        += ${WORK_HOME}/DUT/AHBRAM/ahb_blockram_32.v
+endif
+
 
 # 编译和运行选项
 UVM_TESTNAME     = ${TEST_NAME}
-TB_FILES        += -f ${WORK_HOME}/UVM/tb/ahbram_filelist.f
-#TB_FILES        += -f ${WORK_HOME}/DUT/MHSA/rtl_filelist.f
-TB_FILES        += ${WORK_HOME}/DUT/AHBRAM/ahb_blockram_32.v
 CFLAGS          += -I${DPI_LIB_PATH}
 LDFLAGS         += -L${DPI_LIB_PATH} -l${DPI_LIB_NAME} -ldl -Wl,-rpath=${DPI_LIB_PATH}
 
@@ -35,10 +68,23 @@ ${DPI_LIB_FILE}: ${DPI_SRCS}
 	gcc -shared -fPIC -m64 -I${VCS_HOME}/include -o $@ $^
 
 # 主目标
-run: com sim
+compile:create_build_dir com
+run:create_test_dir create_build_dir com sim ana_log
+ncrun:create_test_dir sim ana_log
+
+create_out_dir:
+	@echo "------- create outdir ----------------------"
+	@mkdir -p ${OUT_STEM}
+
+create_build_dir:create_out_dir
+	@echo "------- create builddir ---------------------"
+	@mkdir -p ${BUILD_OUT_PATH}
+
+create_test_dir:create_out_dir
+	@echo "------- create testdir ----------------------"
+	@mkdir -p ${TEST_OUT_PATH}
 
 com: ${DPI_LIB_FILE}
-	@mkdir -p ${BUILD_OUT_PATH} ${TEST_OUT_PATH}
 	@echo "-----------ready to compile----------------"
 	@cd ${BUILD_OUT_PATH} && \
 	vcs ${VCS_OPTS} \
@@ -53,6 +99,49 @@ sim:
 	@cd ${BUILD_OUT_PATH} && \
 	./simv +UVM_TESTNAME=${UVM_TESTNAME} ${VCS_RUN_OPTS} -l ${RUN_LOG_FILE}
 	@echo "Simulation log: ${RUN_LOG_FILE}"
+
+# Regression
+
+merge:
+	@mkdir -p ${COV_OUT_PATH}/merged
+	urg -full64 -dir ${COV_OUT_PATH}/*/ -dbname ${COV_OUT_PATH}/merged/merged_cov -report ${COV_OUT_PATH}/merged/report
+	@echo "Coverage merged: ${COV_OUT_PATH}/merged/report/hierarchy.html"
+
+TESTS = ahbram_diff_haddr_test ahbram_diff_hsize_test ahbram_haddr_word_unaligned_test ahbram_reset_w2r_test ahbram_smoke_test
+
+regression:
+	@for test in $(TESTS); do \
+		echo "Running test: $$test"; \
+		$(MAKE) run TEST_NAME=$$test || exit 1; \
+	done
+	@echo "All tests completed"
+
+#报告生成
+ANALYSE_LOG           = on
+FAIL_KEYS            = "UVM_ERROR\b.*[1-9]" "UVM_FATAL\b.*[1-9]" "^MVP TEST FAILED\b" "\bfailed\b" "\bERROR\b" "\bFATAL\b" "Error" "\berror\b" "\bVIRL_MEM_WARNING\b" "\bVIRL_MEM_ERR\b"
+PASS_KEYS            = "TEST CASE PASSED"
+IGNORE_FAIL_KEYS     = "\bVIRL_MEM_ERR\b" "\bVIRL_MEM_WARNING\b" "UVM_ERROR\s*:\s*0" "UVM_FATAL\s*:\s*0"
+ANALYSE_LOG_SCRIPTS = $(wildcard ${WORK_HOME}/UVM/script/verf_log_chk.py)
+ifeq ($(ANALYSE_LOG),on)
+    ifneq (${ANALYSE_LOG_SCRIPTS},)
+        ANALYSE_LOG_CMD = python3 ${ANALYSE_LOG_SCRIPTS} \
+                           ${RUN_LOG_FILE} \
+                           -o \
+                           -fk ${FAIL_KEYS} \
+                           $(if ${PASS_KEYS}           ,-pk ${PASS_KEYS}           ,)\
+                           $(if ${IGNORE_FAIL_KEYS}    ,-ik ${IGNORE_FAIL_KEYS}    ,)\
+                           $(if ${IGNORE_BEFORE_KEY}   ,-i  ${IGNORE_BEFORE_KEY}   ,)\
+                           $(if ${IGNORE_AFTER_KEY}    ,-e  ${IGNORE_AFTER_KEY}    ,)\
+                           $(if ${START_AFTER_LINE_NUM},-s  ${START_AFTER_LINE_NUM},)
+        ifeq (${REGR_FLAG}, 1)
+	        ANALYSE_LOG_CMD += -em
+        endif
+    endif
+endif
+
+ana_log:
+	@${ANALYSE_LOG_CMD}        
+	@echo ${RUN_LOG_FILE}    
 
 clean:
 	@rm -rf ${OUT_STEM}
