@@ -1,10 +1,21 @@
+
+import "DPI-C" function void calculate_mhsa(
+    input  logic signed [7:0] X_in[32][128], 
+    input  logic signed [7:0] WQ_in[128][128],
+    input  logic signed [7:0] WK_in[128][128],
+    input  logic signed [7:0] WV_in[128][128],
+    input  logic signed [7:0] W_in[128][128],
+    output logic signed [7:0] out_s8[32][128]
+);
 class mhsa_seq_item extends mhsa_base_seq_item;
   `uvm_object_utils(mhsa_seq_item)
+
 
   // Constructor
   function new(string name = "mhsa_seq_item");
     super.new(name);
     `uvm_info("item", $psprintf("sequence item initialized"), UVM_NONE)
+    module_type = MHSA;
     foreach(input_data[i,j]) input_data[i][j] = 0;
     foreach(weight_q[i,j])   weight_q[i][j]   = 0;
     foreach(weight_k[i,j])   weight_k[i][j]   = 0;
@@ -12,6 +23,7 @@ class mhsa_seq_item extends mhsa_base_seq_item;
     foreach(weight_in[i,j])  weight_in[i][j]  = 0;
     foreach(result[i,j])     result[i][j]     = 0;
   endfunction
+
 
   // UVM Standard Methods
   virtual function void do_pack(uvm_packer packer);
@@ -67,6 +79,10 @@ virtual function void print_arrays(string prefix = "ITEM");
 */ 
     // 打印MHSA输出结果
     print_2d_array_8x32x128(result, "result", prefix);
+
+  endfunction
+  
+ virtual function void calculate_expected();
 
   endfunction
 

@@ -58,7 +58,7 @@ class Run(object):
     
     def gen_path(self):
         self.workarea = self.check_env('WORK_HOME')
-        self.outpath = os.path.join(self.workarea, 'out')
+        self.outpath = os.path.join(self.workarea, 'UVM', 'sim', 'out')
         os.makedirs(self.outpath, exist_ok=True)
     
     def run_command(self, cmd, task_name="", capture_output=True, realtime_output=False):
@@ -372,6 +372,7 @@ class Run(object):
                 self.do_sim_regr()
             
             # 生成最终报告
+            self.green("[INFO] Testname: {}".format(self.testcase))
             self.gen_summary_report()
             
         except KeyboardInterrupt:

@@ -1,6 +1,9 @@
+
 class mhsa_base_seq_item extends uvm_sequence_item;
   `uvm_object_utils(mhsa_base_seq_item)
   
+   typedef enum {QKV, MAC, MHSA} module_type_e;
+   module_type_e module_type;
   //Signal Definition
   //MHSA
   // Input signals
@@ -61,6 +64,9 @@ class mhsa_base_seq_item extends uvm_sequence_item;
   virtual function void print_arrays(string prefix = "ITEM");
   endfunction
 
+  virtual function void calculate_expected();
+  endfunction
+
 `define PRINT_2D_ARRAY(SUFFIX, BIT_WIDTH, ROWS, COLS, SEP_INTERVAL, FMT_WIDTH) \
 virtual function void print_2d_array_``SUFFIX ( \
     logic signed [BIT_WIDTH-1:0] array[0:ROWS-1][0:COLS-1], \
@@ -79,7 +85,6 @@ virtual function void print_2d_array_``SUFFIX ( \
     end \
 endfunction
 
-// 具体实现
 `PRINT_2D_ARRAY(20x32x32,21,32,32,8,8)
 `PRINT_2D_ARRAY(20x32x16,21,32,16,8,8)
 `PRINT_2D_ARRAY(22x32x128,23,32,128,8,9)

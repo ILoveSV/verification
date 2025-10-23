@@ -1,9 +1,19 @@
+import "DPI-C" function void calculate_QKV(
+    input  logic signed [7:0] X_in[32][128], 
+    input  logic signed [7:0] WQ_in[128][128],
+    input  logic signed [7:0] WK_in[128][128],
+    input  logic signed [7:0] WV_in[128][128],
+    output logic signed [7:0] result_Q[32][128],
+    output logic signed [7:0] result_K[32][128],
+    output logic signed [7:0] result_V[32][128]
+);
 class qkv_seq_item extends mhsa_base_seq_item;
   `uvm_object_utils(qkv_seq_item)
 
   function new(string name = "qkv_seq_item");
     super.new(name);
     // Initialize QKV arrays
+    module_type = QKV;
     foreach(X_in[i,j])      X_in[i][j] = 0;
     foreach(WQ_in[i,j])     WQ_in[i][j] = 0;
     foreach(WK_in[i,j])     WK_in[i][j] = 0;
@@ -111,4 +121,8 @@ class qkv_seq_item extends mhsa_base_seq_item;
     end
   endfunction
 
+  function void calculate_expected();
+
+  endfunction
+  
 endclass : qkv_seq_item

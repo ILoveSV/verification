@@ -89,13 +89,13 @@ class mhsa_scb extends uvm_scoreboard;
     end
 
  //   if (uvm_report_enabled(UVM_HIGH, UVM_INFO, "SCOREBOARD"))
-/*    begin
+    begin
       `uvm_info("SCOREBOARD", "actual:", UVM_HIGH)
       actual.print_arrays("DUT_ITEM");
       
       `uvm_info("SCOREBOARD", "expected:", UVM_HIGH)
       expected.print_arrays("REF_ITEM");
-    end*/
+    end
 
     return status;
   endfunction

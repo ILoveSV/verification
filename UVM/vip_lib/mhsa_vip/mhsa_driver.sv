@@ -1,6 +1,7 @@
-
-class mhsa_master_driver extends uvm_driver#(mhsa_base_seq_item);
-  `uvm_component_utils(mhsa_master_driver)
+`ifndef MHSA_DRIVER
+`define MHSA_DRIVER
+class mhsa_driver extends uvm_driver#(mhsa_base_seq_item);
+  `uvm_component_utils(mhsa_driver)
   
   // Configuration subcomponents
   mhsa_mstr_agent_config  mhsa_mstr_agnt_cfg;
@@ -8,7 +9,7 @@ class mhsa_master_driver extends uvm_driver#(mhsa_base_seq_item);
   uvm_analysis_port#(mhsa_base_seq_item) drv2scb;
 
   // Constructor
-  function new(string name="mhsa_master_driver", uvm_component parent = null);
+  function new(string name="mhsa_driver", uvm_component parent = null);
     super.new(name,parent);
     drv2scb=new("drv2scb",this);
   endfunction:new
@@ -24,5 +25,5 @@ class mhsa_master_driver extends uvm_driver#(mhsa_base_seq_item);
   endfunction:connect_phase
 
 
-endclass:mhsa_master_driver
-
+endclass:mhsa_driver
+`endif

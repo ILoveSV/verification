@@ -1,15 +1,14 @@
-class qkv_test extends mhsa_base_test;
-  `uvm_component_utils(qkv_test)
+class mhsa_mac_test extends mhsa_base_test;
+  `uvm_component_utils(mhsa_mac_test)
 
   // Constructor
-  function new(string name="qkv_test",uvm_component parent);
+  function new(string name="mhsa_mac_test",uvm_component parent);
      super.new(name,parent);
    endfunction
 
   // Build Phase
  virtual function void build_phase(uvm_phase phase);
-   mhsa_master_driver::type_id::set_type_override(qkv_driver::get_type());
-   mhsa_base_seq_item::type_id::set_type_override(qkv_seq_item::get_type());
+   mhsa_base_seq_item::type_id::set_type_override(mac_seq_item::get_type());
    super.build_phase(phase);
   endfunction
 
@@ -25,6 +24,8 @@ class qkv_test extends mhsa_base_test;
 
    fork
       begin
+       write_data(4'h1);
+       #20000;
        write_data(4'h2);
       end
       begin
@@ -37,8 +38,8 @@ class qkv_test extends mhsa_base_test;
 
   // Other tasks
   task write_data(input logic [3:0] write_config);
-   qkv_sequence wr_seq;
-   wr_seq=qkv_sequence::type_id::create("wr_seq",this);
+   mac_sequence wr_seq;
+   wr_seq=mac_sequence::type_id::create("wr_seq",this);
    wr_seq.write_config=write_config;
    wr_seq.start(env.i_agt.mhsa_mstr_seqr);
   endtask

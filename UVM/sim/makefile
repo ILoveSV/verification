@@ -1,7 +1,7 @@
-#export TEST_NAME ?= demo_test
-#export TEST_DUT  ?= mhsa
-export TEST_NAME ?= ahbram_diff_haddr_test
-export TEST_DUT  ?= ahbram
+export TEST_NAME ?= mhsa_demo_test
+export TEST_DUT  ?= mhsa
+#export TEST_NAME ?= ahbram_diff_haddr_test
+#export TEST_DUT  ?= ahbram
 
 export SEED      ?= 1
 VERBOSITY         = UVM_HIGH
@@ -19,7 +19,7 @@ VCS_RUN_OPTS += -ucli -do ${SCRIPT_PATH}/wave_fsdb.do
 endif
 
 # 覆盖率配置
-export COV       ?= off
+export COV       ?= on
 export CM_OPTS   ?= line+branch+cond+tgl+assert+fsm
 CM_NAME           = $(TEST_NAME)_$(SEED)
 CM_DIR            = $(COV_OUT_PATH)/$(CM_NAME)
@@ -69,22 +69,19 @@ ${DPI_LIB_FILE}: ${DPI_SRCS}
 
 # 主目标
 compile:create_build_dir com
-run:create_test_dir create_build_dir com sim ana_log
+run: create_build_dir create_test_dir com sim ana_log
 ncrun:create_test_dir sim ana_log
 
 create_out_dir:
-	@echo "------- create outdir ----------------------"
 	@mkdir -p ${OUT_STEM}
 
 create_build_dir:create_out_dir
-	@echo "------- create builddir ---------------------"
 	@mkdir -p ${BUILD_OUT_PATH}
 
 create_test_dir:create_out_dir
-	@echo "------- create testdir ----------------------"
 	@mkdir -p ${TEST_OUT_PATH}
 
-com: ${DPI_LIB_FILE}
+com: ${DPI_LIB_FILE} create_build_dir
 	@echo "-----------ready to compile----------------"
 	@cd ${BUILD_OUT_PATH} && \
 	vcs ${VCS_OPTS} \
@@ -100,21 +97,11 @@ sim:
 	./simv +UVM_TESTNAME=${UVM_TESTNAME} ${VCS_RUN_OPTS} -l ${RUN_LOG_FILE}
 	@echo "Simulation log: ${RUN_LOG_FILE}"
 
-# Regression
-
 merge:
 	@mkdir -p ${COV_OUT_PATH}/merged
 	urg -full64 -dir ${COV_OUT_PATH}/*/ -dbname ${COV_OUT_PATH}/merged/merged_cov -report ${COV_OUT_PATH}/merged/report
 	@echo "Coverage merged: ${COV_OUT_PATH}/merged/report/hierarchy.html"
 
-TESTS = ahbram_diff_haddr_test ahbram_diff_hsize_test ahbram_haddr_word_unaligned_test ahbram_reset_w2r_test ahbram_smoke_test
-
-regression:
-	@for test in $(TESTS); do \
-		echo "Running test: $$test"; \
-		$(MAKE) run TEST_NAME=$$test || exit 1; \
-	done
-	@echo "All tests completed"
 
 #报告生成
 ANALYSE_LOG           = on

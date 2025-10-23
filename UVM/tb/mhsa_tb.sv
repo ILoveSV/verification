@@ -20,7 +20,6 @@ module top_tb;
     .W_in   (u_mhsa_if.weight_in),
     .out_s8 (u_mhsa_if.result)
   );
-/*
   // MAC32x16x16x32 
   mac32x16x16x32 u_mac32x16x16x32(
     .clk  (clk),
@@ -60,7 +59,6 @@ module top_tb;
     .result_K(u_mhsa_if.result_K),
     .result_V(u_mhsa_if.result_V)
   );
-*/
 
   // 时钟生成（100MHz）
   initial begin

@@ -57,15 +57,7 @@ clocking cb @(posedge PCLK);
     input result;
 
  // MACs
-/*
-grep -r -l "mhsa_master_driver" . --include="*.sv" | xargs sed -i 's/mhsa_master_driver/mhsa_master_driver/g'
-grep -r -l "mhsa_mstr_drvr" . --include="*.sv" | xargs sed -i 's/mhsa_mstr_drvr/mhsa_mstr_drvr/g'
-grep -r -l "mhsa_mntr" . --include="*.sv" | xargs sed -i 's/mhsa_mntr/mhsa_mntr/g'
-grep -r -l "mhsa_mstr_seqr" . --include="*.sv" | xargs sed -i 's/mhsa_mstr_seqr/mhsa_mstr_seqr/g'
-grep -r -l "" . --include="*.sv" | xargs sed -i 's//mhsa_/g'
-grep -r -l "" . --include="*.sv" | xargs sed -i 's//mhsa_/g'
-grep -r -l "" . --include="*.sv" | xargs sed -i 's//mhsa_/g'
-*/
+
  // input
         output Q_32x16x16x32;
         output K_32x16x16x32;

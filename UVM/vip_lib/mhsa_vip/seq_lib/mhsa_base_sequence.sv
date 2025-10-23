@@ -1,4 +1,5 @@
-
+`ifndef MHSA_BASE_SEQUENCE_SV
+`define MHSA_BASE_SEQUENCE_SV
 class mhsa_base_sequence extends uvm_sequence#(mhsa_base_seq_item,mhsa_base_seq_item);
   `uvm_object_utils(mhsa_base_sequence)
 
@@ -9,4 +10,4 @@ class mhsa_base_sequence extends uvm_sequence#(mhsa_base_seq_item,mhsa_base_seq_
 
 
 endclass
-
+`endif

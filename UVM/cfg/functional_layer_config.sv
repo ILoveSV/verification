@@ -199,7 +199,7 @@ class functional_layer_config extends bus_layer_config;
     end
     
     // 覆盖组信息
-    s = {s, $sformatf("  Coverage: Data=%0d, Control=%0d, Interrupt=%0d, Error=%0d\n",
+    s = {s, $sformatf("  Coverage: Data=%0d, Control=%0d, Interrupt=%0d, E1rror=%0d\n",
          enable_data_coverage, enable_control_coverage, 
          enable_interrupt_coverage, enable_error_coverage)};
     

@@ -1,5 +1,6 @@
-
-class mhsa_mstr_sequencer extends uvm_sequencer#(mhsa_base_seq_item,mhsa_base_seq_item);
+`ifndef MHSA_MSTR_SEQUENCER_SV
+`define MHSA_MSTR_SEQUENCER_SV
+class mhsa_mstr_sequencer extends mhsa_sequencer;
   `uvm_component_utils(mhsa_mstr_sequencer)
 
   // Constructor
@@ -18,3 +19,4 @@ class mhsa_mstr_sequencer extends uvm_sequencer#(mhsa_base_seq_item,mhsa_base_se
   endfunction
 
 endclass:mhsa_mstr_sequencer
+`endif // MHSA_MSTR_SEQUENCER_SV

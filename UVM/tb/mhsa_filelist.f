@@ -4,9 +4,8 @@
 +incdir+$WORK_HOME/UVM/env
 +incdir+$WORK_HOME/UVM/test/mhsa
 +incdir+$WORK_HOME/UVM/vip_lib/mhsa_vip
-+incdir+$WORK_HOME/UVM/vip_lib/mhsa_vip/mhsa_seq
-+incdir+$WORK_HOME/UVM/vip_lib/mhsa_vip/drivers
-+incdir+$WORK_HOME/UVM/vip_lib/mhsa_vip/transactions
++incdir+$WORK_HOME/UVM/vip_lib/mhsa_vip/trans_lib
++incdir+$WORK_HOME/UVM/vip_lib/mhsa_vip/seq_lib
 
 $UVM_HOME/src/uvm_pkg.sv
 

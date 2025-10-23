@@ -1,3 +1,20 @@
+import "DPI-C" function void calculate_QKT_32x16x16x32(
+    input  logic signed [7:0] Q_32x16x16x32 [32][16],
+    input  logic signed [7:0] K_32x16x16x32 [16][32],
+    output logic signed [20:0] QKT_32x16x16x32 [32][32]
+);
+
+import "DPI-C" function void calculate_QKT_32x32x32x16(
+    input  logic signed [7:0] Q_32x32x32x16 [32][32],
+    input  logic signed [7:0] K_32x32x32x16 [32][16],
+    output logic signed [20:0] QKT_32x32x32x16 [32][16]
+);
+
+import "DPI-C" function void calculate_QKT_32x128x128x128(
+    input  logic signed [7:0] Q_32x128x128x128 [32][127:0],
+    input  logic signed [7:0] K_32x128x128x128 [127:0][127:0],
+    output logic signed [22:0] QKT_32x128x128x128 [32][127:0]
+);
 class mac_seq_item extends mhsa_base_seq_item;
   `uvm_object_utils(mac_seq_item)
 
@@ -5,6 +22,7 @@ class mac_seq_item extends mhsa_base_seq_item;
   function new(string name = "mac_seq_item");
     super.new(name);
     `uvm_info("item", $psprintf("sequence item initialized"), UVM_NONE)
+    module_type = MAC;
     foreach(Q_32x16x16x32[i,j])    Q_32x16x16x32[i][j] = 0;
     foreach(K_32x16x16x32[i,j])    K_32x16x16x32[i][j] = 0;
     foreach(Q_32x32x32x16[i,j])    Q_32x32x32x16[i][j] = 0;
@@ -114,6 +132,8 @@ virtual function void print_arrays(string prefix = "ITEM");
     print_2d_array_22x32x128(QKT_32x128x128x128, "QKT_32x128x128x128", prefix);
   endfunction
 
+  virtual function void calculate_expected();
 
+  endfunction
 
 endclass : mac_seq_item

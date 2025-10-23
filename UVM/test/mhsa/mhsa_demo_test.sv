@@ -1,14 +1,15 @@
-class demo_test extends mhsa_base_test;
-  `uvm_component_utils(demo_test)
+`ifndef MHSA_DEMO_TEST_SV
+`define MHSA_DEMO_TEST_SV
+class mhsa_demo_test extends mhsa_base_test;
+  `uvm_component_utils(mhsa_demo_test)
 
   // Constructor
-  function new(string name="demo_test",uvm_component parent);
+  function new(string name="mhsa_demo_test",uvm_component parent);
      super.new(name,parent);
    endfunction
 
   // Build Phase
  function void build_phase(uvm_phase phase);
-   mhsa_master_driver::type_id::set_type_override(mhsa_driver::get_type());
    mhsa_base_seq_item::type_id::set_type_override(mhsa_seq_item::get_type());
    super.build_phase(phase);
   endfunction
@@ -17,10 +18,10 @@ class demo_test extends mhsa_base_test;
   task run_phase(uvm_phase phase);
    super.run_phase(phase);
    phase.raise_objection(this);
-   `uvm_info("demo_test",$psprintf("test-run-phase-111"),UVM_NONE)
+   `uvm_info("mhsa_demo_test",$psprintf("test-run-phase-111"),UVM_NONE)
    fork
       begin
-       write_data(4'h1);
+       write_data(4'h2);
        
     //   write_data(4'h2);
     //   #200000;
@@ -29,11 +30,11 @@ class demo_test extends mhsa_base_test;
     //   write_data(4'h5);
       end
       begin
-        #10000;
+        #190000;
       end
 
    join 
-     `uvm_info("demo_test",$psprintf("test-run-phase-222"),UVM_NONE)
+     `uvm_info("mhsa_demo_test",$psprintf("test-run-phase-222"),UVM_NONE)
 
    phase.drop_objection(this);
  endtask
@@ -48,3 +49,4 @@ class demo_test extends mhsa_base_test;
 
 
  endclass
+`endif
