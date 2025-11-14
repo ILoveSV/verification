@@ -30,7 +30,7 @@ class mhsa_env extends uvm_env;
    end
    uvm_config_db#(mhsa_mstr_agent_config)::set(null,"*","MHSA_MSTR_AGNT_CFG",w_cfg.mhsa_mstr_agnt_cfg);
    uvm_config_db#(mhsa_config)::set(this, "virt_sqr", "cfg", w_cfg);
-//   uvm_config_db#(mhsa_config)::set(this, "cov", "cfg", cfg);
+   uvm_config_db#(mhsa_config)::set(this, "cov", "cfg", cfg);
    uvm_config_db#(mhsa_config)::set(this, "scb", "cfg", w_cfg); //scb hasn't use this
 
    // Build components

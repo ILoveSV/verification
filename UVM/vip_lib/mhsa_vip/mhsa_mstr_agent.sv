@@ -1,19 +1,13 @@
-class mhsa_mstr_agent extends uvm_agent;
-  `uvm_component_utils(mhsa_mstr_agent)
 
-  // Configuration subcomponents
-  mhsa_mstr_agent_config  mhsa_mstr_agnt_cfg;
-  mhsa_master_driver      mhsa_mstr_drvr;
-  mhsa_monitor            mhsa_mntr;
-  mhsa_mstr_sequencer     mhsa_mstr_seqr;
-
+`ifndef MHSA_MSTR_AGENT_SV
+`define MHSA_MSTR_AGENT_SV
   // Constructor
-  function new(string name="mhsa_mstr_agent", uvm_component parent);
+  function mhsa_mstr_agent::new(string name="mhsa_mstr_agent", uvm_component parent);
     super.new(name, parent);
   endfunction : new
 
   // Build Phase
-  virtual function void build_phase(uvm_phase phase);
+  function void mhsa_mstr_agent::build_phase(uvm_phase phase);
     super.build_phase(phase);
 
     if (!uvm_config_db#(mhsa_mstr_agent_config)::get(
@@ -31,7 +25,7 @@ class mhsa_mstr_agent extends uvm_agent;
   endfunction : build_phase
 
   // Connect Phase
-  virtual function void connect_phase(uvm_phase phase);
+  function void mhsa_mstr_agent::connect_phase(uvm_phase phase);
     super.connect_phase(phase);
 
     if (mhsa_mstr_agnt_cfg.is_active == UVM_ACTIVE) begin
@@ -44,4 +38,4 @@ class mhsa_mstr_agent extends uvm_agent;
     mhsa_mntr.mhsa_mstr_agnt_cfg = mhsa_mstr_agnt_cfg;
   endfunction : connect_phase
 
-endclass : mhsa_mstr_agent
+`endif

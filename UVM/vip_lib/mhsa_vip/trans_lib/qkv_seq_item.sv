@@ -122,7 +122,15 @@ class qkv_seq_item extends mhsa_base_seq_item;
   endfunction
 
   function void calculate_expected();
-
+                calculate_QKV(
+                  X_in,
+                  WQ_in,
+                  WK_in,
+                  WV_in,
+                  result_Q,
+                  result_K,
+                  result_V
+                );
   endfunction
   
 endclass : qkv_seq_item

@@ -133,7 +133,21 @@ virtual function void print_arrays(string prefix = "ITEM");
   endfunction
 
   virtual function void calculate_expected();
-
+                calculate_QKT_32x16x16x32(
+                  Q_32x16x16x32,
+                  K_32x16x16x32,
+                  QKT_32x16x16x32
+                );
+                calculate_QKT_32x32x32x16(
+                  Q_32x32x32x16,
+                  K_32x32x32x16,
+                  QKT_32x32x32x16
+                );
+                calculate_QKT_32x128x128x128(
+                  Q_32x128x128x128,
+                  K_32x128x128x128,
+                  QKT_32x128x128x128
+                );
   endfunction
 
 endclass : mac_seq_item

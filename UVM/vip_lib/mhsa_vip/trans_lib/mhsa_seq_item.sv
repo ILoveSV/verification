@@ -83,7 +83,14 @@ virtual function void print_arrays(string prefix = "ITEM");
   endfunction
   
  virtual function void calculate_expected();
-
+                calculate_mhsa(
+                 input_data,
+                 weight_q,
+                 weight_k,
+                 weight_v,
+                 weight_in,
+                 result
+               );
   endfunction
 
 endclass : mhsa_seq_item

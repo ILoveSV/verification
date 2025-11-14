@@ -1,9 +1,13 @@
 
 class mhsa_base_seq_item extends uvm_sequence_item;
-  `uvm_object_utils(mhsa_base_seq_item)
   
    typedef enum {QKV, MAC, MHSA} module_type_e;
    module_type_e module_type;
+
+  `uvm_object_utils_begin(mhsa_base_seq_item)
+    `uvm_field_enum(module_type_e, module_type, UVM_ALL_ON)
+  `uvm_object_utils_end
+
   //Signal Definition
   //MHSA
   // Input signals
@@ -40,7 +44,7 @@ class mhsa_base_seq_item extends uvm_sequence_item;
     logic signed [7:0] result_K [0:31][0:127];
     logic signed [7:0] result_V [0:31][0:127];
 
-  // UVM Standard Methods (to be overridden)
+  // UVM Standard Methods
   function new(string name = "mhsa_base_seq_item");
     super.new(name);
   endfunction

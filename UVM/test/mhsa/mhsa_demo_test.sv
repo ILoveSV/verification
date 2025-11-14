@@ -21,7 +21,7 @@ class mhsa_demo_test extends mhsa_base_test;
    `uvm_info("mhsa_demo_test",$psprintf("test-run-phase-111"),UVM_NONE)
    fork
       begin
-       write_data(4'h2);
+       write_data(4'h1);
        
     //   write_data(4'h2);
     //   #200000;
