@@ -14,8 +14,8 @@ interface i2c_if;
   logic [IC_INTR_NUM-1 :0] intr;
 
   // I2C debug ports
-  logic       debug_s_gen;
-  logic       debug_p_gen;
+  logic       debug_s_gen;//i2c start
+  logic       debug_p_gen;//i2c stop
   logic       debug_data;
   logic       debug_addr;
   logic       debug_rd;
@@ -59,14 +59,16 @@ interface i2c_if;
       if(id >= 0)
         @(intr iff intr[id] === 1'b1);
       else
-        @(intr iff intr >= 0);
+
+       // @(intr iff intr >= 0);// high bit intr will not triggered
+        @(intr iff intr != 0);
     end
   endtask
 
   function int get_intr(int id);
     if(id > IC_INTR_NUM -1) begin
       `uvm_error("OUTRANGE", $sformatf("Interrupt id [%0d] is out of range [%0d : 0]", id, IC_INTR_NUM-1))
-      return -1;
+      return -1;//1'bx better?
     end
     else 
       return intr[id]; 

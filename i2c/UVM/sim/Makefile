@@ -1,4 +1,4 @@
-export TEST_NAME ?= rkv_i2c_master_rx_status_test
+export TEST_NAME ?= rkv_i2c_reg_access_test
 export TEST_DUT  ?= i2c
 
 export SEED ?= 1

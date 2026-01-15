@@ -2390,7 +2390,8 @@ endgroup
 		this.IC_COMP_TYPE_IC_COMP_TYPE = this.IC_COMP_TYPE.IC_COMP_TYPE;
     
     // specify HDL path
-    add_hdl_path("i2c_tb.dut.U_DW_apb_i2c_regfile");  
+    // Top TB module name is 'top_tb', so use that as the root
+    add_hdl_path("top_tb.dut.U_DW_apb_i2c_regfile");  
     this.IC_CON.add_hdl_path_slice("ic_con_pre", 0, 32);
     this.IC_TAR.add_hdl_path_slice("ic_tar_reg", 0, 32);
     this.IC_SAR.add_hdl_path_slice("ic_sar", 0, 32);

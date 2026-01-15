@@ -2,7 +2,7 @@
 #export TEST_DUT  ?= mhsa
 #export TEST_NAME ?= ahbram_diff_haddr_test
 #export TEST_DUT  ?= ahbram
-export TEST_NAME ?= i2c_quick_reg_access_test
+export TEST_NAME ?= i2c_reg_access_test
 export TEST_DUT  ?= i2c
 
 export SEED      ?= 1
@@ -111,7 +111,7 @@ merge:
 #报告生成
 ANALYSE_LOG           = on
 FAIL_KEYS            = "UVM_ERROR\b.*[1-9]" "UVM_FATAL\b.*[1-9]" "^MVP TEST FAILED\b" "\bfailed\b" "\bERROR\b" "\bFATAL\b" "Error" "\berror\b" "\bVIRL_MEM_WARNING\b" "\bVIRL_MEM_ERR\b"
-PASS_KEYS            = "TEST CASE PASSED"
+PASS_KEYS            = "TEST CASE PASSED" "===FINISHED==="
 IGNORE_FAIL_KEYS     = "\bVIRL_MEM_ERR\b" "\bVIRL_MEM_WARNING\b" "UVM_ERROR\s*:\s*0" "UVM_FATAL\s*:\s*0"
 ANALYSE_LOG_SCRIPTS = $(wildcard ${WORK_HOME}/UVM/script/verf_log_chk.py)
 ifeq ($(ANALYSE_LOG),on)
