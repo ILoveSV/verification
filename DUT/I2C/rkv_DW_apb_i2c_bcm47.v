@@ -25,7 +25,7 @@
 // DesignWare IP ID: ddf794e1
 //
 ////////////////////////////////////////////////////////////////////////////////
-module rkv_DW_apb_i2c_bcm47 (
+module DW_apb_i2c_bcm47 (
      clk,         
      rst_n,       
      init_n,      

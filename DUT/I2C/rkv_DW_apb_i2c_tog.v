@@ -34,7 +34,7 @@
 // -------------------------------------------------------------------
 
 
-module rkv_DW_apb_i2c_tog (
+module DW_apb_i2c_tog (
     clk,
     resetn,
     tog_data_in,

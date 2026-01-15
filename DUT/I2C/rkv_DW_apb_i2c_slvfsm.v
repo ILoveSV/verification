@@ -39,7 +39,7 @@
 // -- Macros
 // -----------------------------------------------------------
 
-module rkv_DW_apb_i2c_slvfsm
+module DW_apb_i2c_slvfsm
   (
    ic_rst_n
                            ,ic_clk

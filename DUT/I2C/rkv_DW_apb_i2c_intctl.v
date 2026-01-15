@@ -35,7 +35,7 @@
 // -------------------------------------------------------------------
 // -------------------------------------------------------------------
 
-module rkv_DW_apb_i2c_intctl 
+module DW_apb_i2c_intctl 
   (
    // APB bus interface
    pclk,
@@ -277,7 +277,7 @@ module rkv_DW_apb_i2c_intctl
    assign ic2pl_tx_abrt_source = tx_abrt_source;
    assign tx_abrt_source_sync = sic2pl_tx_abrt_source_sync;
 
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .WIDTH       (`IC_TX_ABRT_SOURCE_RS),
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
@@ -296,7 +296,7 @@ module rkv_DW_apb_i2c_intctl
    wire                              sic2pl_tx_abrt_flg_sync;
    assign ic2pl_tx_abrt_flg = tx_abrt_flg;
    assign tx_abrt_flg_sync = sic2pl_tx_abrt_flg_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -319,7 +319,7 @@ module rkv_DW_apb_i2c_intctl
    assign rx_done_flg_sync = sic2pl_rx_done_flg_sync;
    assign ic_rd_req_flg_sync = sic2pl_ic_rd_req_flg_sync;
 
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -332,7 +332,7 @@ module rkv_DW_apb_i2c_intctl
         ,.data_d              (sic2pl_rx_done_flg_sync)
       );
 
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -350,7 +350,7 @@ module rkv_DW_apb_i2c_intctl
    wire                               sic2pl_p_det_flg_sync;
    assign ic2pl_p_det_flg = p_det_flg;
    assign p_det_flg_sync = sic2pl_p_det_flg_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -368,7 +368,7 @@ module rkv_DW_apb_i2c_intctl
    wire                              sic2pl_s_det_flg_sync;
    assign ic2pl_s_det_flg = s_det_flg;
    assign s_det_flg_sync = sic2pl_s_det_flg_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -386,7 +386,7 @@ module rkv_DW_apb_i2c_intctl
    wire                              sic2pl_rx_gen_call_flg_sync;
    assign ic2pl_rx_gen_call_flg = rx_gen_call_flg;
    assign rx_gen_call_flg_sync = sic2pl_rx_gen_call_flg_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -404,7 +404,7 @@ module rkv_DW_apb_i2c_intctl
    wire                              sic2pl_slv_clr_leftover_flg_sync;
    assign ic2pl_slv_clr_leftover_flg = slv_clr_leftover_flg;
    assign slv_clr_leftover_flg_sync = sic2pl_slv_clr_leftover_flg_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -422,7 +422,7 @@ module rkv_DW_apb_i2c_intctl
    wire                              sic2pl_set_tx_empty_en_flg_sync;
    assign ic2pl_set_tx_empty_en_flg = set_tx_empty_en_flg;
    assign set_tx_empty_en_flg_sync = sic2pl_set_tx_empty_en_flg_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -511,7 +511,7 @@ module rkv_DW_apb_i2c_intctl
    wire                              sic2pl_mst_activity_sync;
    assign ic2pl_mst_activity = mst_activity;
    assign mst_activity_sync = sic2pl_mst_activity_sync;
-   rkv_DW_apb_i2c_bcm21
+   DW_apb_i2c_bcm21
     #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -529,7 +529,7 @@ module rkv_DW_apb_i2c_intctl
    wire                              sic2pl_slv_activity_sync;
    assign ic2pl_slv_activity = slv_activity;
    assign slv_activity_sync = sic2pl_slv_activity_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -565,7 +565,7 @@ module rkv_DW_apb_i2c_intctl
    wire                      sic2pl_ic_disable_sync;
    assign ic2pl_ic_disable = ic_disable;
    assign ic_disable_sync  = sic2pl_ic_disable_sync;
-   rkv_DW_apb_i2c_bcm41
+   DW_apb_i2c_bcm41
     #(
         .RST_VAL     (1),
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
@@ -608,7 +608,7 @@ module rkv_DW_apb_i2c_intctl
    // Generate the PCLK-synchronised versions of:
    // - slv_rx_aborted
    // ------------------------------------------------------
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -625,7 +625,7 @@ module rkv_DW_apb_i2c_intctl
    // Generate the PCLK-synchronised versions of:
    // - slv_fifo_filled_and_flushed
    // ------------------------------------------------------
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)

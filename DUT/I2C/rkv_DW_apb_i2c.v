@@ -49,7 +49,7 @@
 // End License Usage
 //==============================================================================
 
-module rkv_DW_apb_i2c (
+module DW_apb_i2c (
 
                    ic_start_det_intr,
                    ic_stop_det_intr,
@@ -532,7 +532,7 @@ module rkv_DW_apb_i2c (
 //# Generates toggle flags for the signals travelling from the ic_clk to the pclk domain.
 //# Looks for edges on signals to indicate a toggle then these edges can be detected as changes in pclk domain.
 //#
-   rkv_DW_apb_i2c_toggle
+   DW_apb_i2c_toggle
     U_DW_apb_i2c_toggle (
       //inputs
       .ic_rst_n(ic_rst_n),
@@ -619,7 +619,7 @@ module rkv_DW_apb_i2c (
 
 
    // Instantiation for the IC pclk to ic_clk synchronization module
-   rkv_DW_apb_i2c_sync
+   DW_apb_i2c_sync
     U_DW_apb_i2c_sync
      (
       .ic_rst_n(ic_rst_n),
@@ -659,7 +659,7 @@ module rkv_DW_apb_i2c (
 
 
    // Instantiation for IC Interrupt Interface
-   rkv_DW_apb_i2c_intctl
+   DW_apb_i2c_intctl
     U_DW_apb_i2c_intctl
      (
       // APB bus interface
@@ -742,7 +742,7 @@ module rkv_DW_apb_i2c (
 
 
    // Instantiation for tx shift register
-   rkv_DW_apb_i2c_tx_shift
+   DW_apb_i2c_tx_shift
     U_DW_apb_i2c_tx_shift
      (
       //top level
@@ -829,7 +829,7 @@ module rkv_DW_apb_i2c (
 
 
    // Instantiation for rx shift register
-   rkv_DW_apb_i2c_rx_shift
+   DW_apb_i2c_rx_shift
     U_DW_apb_i2c_rx_shift
      (
       .ic_clk(ic_clk)
@@ -890,7 +890,7 @@ module rkv_DW_apb_i2c (
       );
 
    // Instantiation for APB_Interface
-   rkv_DW_apb_i2c_biu
+   DW_apb_i2c_biu
     U_DW_apb_i2c_biu
      (
       .pclk(pclk),
@@ -915,7 +915,7 @@ module rkv_DW_apb_i2c (
       );
 
    // Instantiation for slave state machine
-   rkv_DW_apb_i2c_slvfsm
+   DW_apb_i2c_slvfsm
     U_DW_apb_i2c_slvfsm
      (
       .ic_rst_n(ic_rst_n)
@@ -973,7 +973,7 @@ module rkv_DW_apb_i2c (
       );
 
    // Instantiation for the master state machine
-   rkv_DW_apb_i2c_mstfsm
+   DW_apb_i2c_mstfsm
     U_DW_apb_i2c_mstfsm
      (
       .ic_rst_n(ic_rst_n),
@@ -1064,7 +1064,7 @@ module rkv_DW_apb_i2c (
       );
 
    // Instantiation for rx_filter
-   rkv_DW_apb_i2c_rx_filter
+   DW_apb_i2c_rx_filter
     U_DW_apb_i2c_rx_filter
      (
       //top level signals
@@ -1122,7 +1122,7 @@ module rkv_DW_apb_i2c (
 
 
    // Instantiation for clk_gen
-   rkv_DW_apb_i2c_clk_gen
+   DW_apb_i2c_clk_gen
     U_DW_apb_i2c_clk_gen (
      //top level signals
      .ic_clk(ic_clk),
@@ -1164,7 +1164,7 @@ module rkv_DW_apb_i2c (
                                             );
 
    // Instantiation for IC register file
-   rkv_DW_apb_i2c_regfile
+   DW_apb_i2c_regfile
     U_DW_apb_i2c_regfile (
      // APB bus interface
      .pclk(pclk),
@@ -1255,7 +1255,7 @@ module rkv_DW_apb_i2c (
                                             );
 
    // Instantiation for IC FIFO Controller
-   rkv_DW_apb_i2c_fifo
+   DW_apb_i2c_fifo
     U_DW_apb_i2c_fifo (
      .pclk            (pclk),
      .presetn         (presetn),
@@ -1297,7 +1297,7 @@ module rkv_DW_apb_i2c (
 
 
    // Receive FIFO RAM block
-   rkv_DW_apb_i2c_bcm57
+   DW_apb_i2c_bcm57
     #(`IC_DATA_FIFO_RS, `IC_RX_BUFFER_MOD_DEPTH, 0, `RX_ABW) U_dff_rx (
      .clk                  (pclk),
      .rst_n                (presetn),
@@ -1309,7 +1309,7 @@ module rkv_DW_apb_i2c (
    );
 
    // Transmit FIFO RAM block
-   rkv_DW_apb_i2c_bcm57
+   DW_apb_i2c_bcm57
     #(`IC_DATA_TX_CMD_RS, `IC_TX_BUFFER_MOD_DEPTH, 0, `TX_ABW) U_dff_tx (
      .clk                  (pclk),
      .rst_n                (presetn),

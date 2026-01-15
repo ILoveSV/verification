@@ -1,0 +1,3 @@
+export WORK_HOME=/home/meyou/practice/verification/i2c
+export UVM_HOME=/home/meyou/uvm-1.2
+export WORKAREA=/home/meyou/practice/verification/i2c/UVM/sim

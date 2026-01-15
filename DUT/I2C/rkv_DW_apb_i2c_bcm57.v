@@ -28,7 +28,7 @@
 
 
 
-  module rkv_DW_apb_i2c_bcm57 (
+  module DW_apb_i2c_bcm57 (
         clk,
         rst_n,
         wr_n,

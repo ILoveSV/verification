@@ -34,7 +34,7 @@
 // -------------------------------------------------------------------
 
 
-module rkv_DW_apb_i2c_regs (
+module DW_apb_i2c_regs (
     clk,
     resetn,
     data_in,

@@ -32,7 +32,7 @@
 // -------------------------------------------------------------------
 
 
-module rkv_DW_apb_i2c_fifo
+module DW_apb_i2c_fifo
    (
     pclk,
     presetn,
@@ -159,7 +159,7 @@ module rkv_DW_apb_i2c_fifo
    wire                     sic2pl_tx_pop_flg_sync;
    assign ic2pl_tx_pop_flg = tx_pop_flg;
    assign tx_pop_flg_sync = sic2pl_tx_pop_flg_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
        .F_SYNC_TYPE (`IC_SYNC_DEPTH),
        .VERIF_EN    (`IC_VERIF_EN)
@@ -177,7 +177,7 @@ module rkv_DW_apb_i2c_fifo
    wire                     sic2pl_rx_push_flg_sync;
    assign ic2pl_rx_push_flg = rx_push_flg;
    assign rx_push_flg_sync = sic2pl_rx_push_flg_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
        .F_SYNC_TYPE (`IC_SYNC_DEPTH),
        .VERIF_EN    (`IC_VERIF_EN)
@@ -283,7 +283,7 @@ module rkv_DW_apb_i2c_fifo
    // ------------------------------------------------------
    // -- Instance of tx fifo controller
    // ------------------------------------------------------
-   rkv_DW_apb_i2c_bcm06
+   DW_apb_i2c_bcm06
     #(`IC_TX_BUFFER_DEPTH, 2, `TX_ABW) U_tx_fifo
          (
           .clk           (pclk)
@@ -326,7 +326,7 @@ module rkv_DW_apb_i2c_fifo
    // ------------------------------------------------------
    // -- Instance of rx fifo controller
    // ------------------------------------------------------
-   rkv_DW_apb_i2c_bcm06
+   DW_apb_i2c_bcm06
     #(`IC_RX_BUFFER_DEPTH, 2, `RX_ABW) U_rx_fifo
          (
           .clk           (pclk)

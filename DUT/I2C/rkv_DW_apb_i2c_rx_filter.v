@@ -36,7 +36,7 @@
 // -------------------------------------------------------------------
 
 
-module rkv_DW_apb_i2c_rx_filter
+module DW_apb_i2c_rx_filter
   (
    //top level signals
    ic_clk,
@@ -296,7 +296,7 @@ module rkv_DW_apb_i2c_rx_filter
    // -- Sync the i2c bus signals to internal ic_clk
    // ------------------------------------------------------
    // ic_clk_in_a synchronization
-   rkv_DW_apb_i2c_bcm41
+   DW_apb_i2c_bcm41
     #(
      .RST_VAL     (1), 
      .F_SYNC_TYPE (`IC_SYNC_DEPTH),
@@ -314,7 +314,7 @@ module rkv_DW_apb_i2c_rx_filter
    assign async2icl_ic_data_in_a = ic_data_in_a;
    assign sda_sync = sasync2icl_sda_sync;
    // ic_data_in_a synchronization
-   rkv_DW_apb_i2c_bcm41
+   DW_apb_i2c_bcm41
     #(
      .RST_VAL     (1),
      .F_SYNC_TYPE (`IC_SYNC_DEPTH),

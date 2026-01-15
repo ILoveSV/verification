@@ -49,7 +49,7 @@
 // -------------------------------------------------------------------
 
 
-module rkv_DW_apb_i2c_biu
+module DW_apb_i2c_biu
 (
  // APB bus interface
  pclk,

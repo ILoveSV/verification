@@ -26,7 +26,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-module rkv_DW_apb_i2c_bcm07 (
+module DW_apb_i2c_bcm07 (
         clk_push,
         rst_push_n,
         init_push_n,
@@ -135,7 +135,7 @@ wire [COUNT_WIDTH-1 : 0]        pop_addr_g;
 
   assign we_n = push_full | push_req_n;
 
-rkv_DW_apb_i2c_bcm05
+DW_apb_i2c_bcm05
  #(DEPTH, ADDR_WIDTH, COUNT_WIDTH, PUSH_AE_LVL, PUSH_AF_LVL, ERR_MODE, PUSH_SYNC, 1, PIPE_GRAY_PUSH, VERIF_EN ) U_PUSH_FIFOFCTL(
   .clk(clk_push),
   .rst_n(rst_push_n),
@@ -174,7 +174,7 @@ rkv_DW_apb_i2c_bcm05
 // spyglass enable_block W528
   );
 
-  rkv_DW_apb_i2c_bcm05
+  DW_apb_i2c_bcm05
    #(DEPTH, ADDR_WIDTH, COUNT_WIDTH, POP_AE_LVL, POP_AF_LVL, ERR_MODE, POP_SYNC, 0, PIPE_GRAY_POP, VERIF_EN ) U_POP_FIFOFCTL(
   .clk(clk_pop),
   .rst_n(rst_pop_n),

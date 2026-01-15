@@ -41,7 +41,7 @@
 // -----------------------------------------------------------
 
 
-module rkv_DW_apb_i2c_mstfsm
+module DW_apb_i2c_mstfsm
   (
    ic_rst_n,
                            ic_clk,

@@ -38,7 +38,7 @@
 // -------------------------------------------------------------------
 
 
-module rkv_DW_apb_i2c_tx_shift
+module DW_apb_i2c_tx_shift
   (
    //top level
    ic_clk,

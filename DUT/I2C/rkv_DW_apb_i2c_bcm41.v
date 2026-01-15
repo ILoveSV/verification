@@ -27,7 +27,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-module rkv_DW_apb_i2c_bcm41 (
+module DW_apb_i2c_bcm41 (
     clk_d,
     rst_d_n,
     data_s,
@@ -63,7 +63,7 @@ wire   [WIDTH-1:0]      data_d_int;
 // spyglass disable_block SelfDeterminedExpr-ML
 // SMD: Self determined expression found
 // SJ: The integer value of a parameter, that starts in the range of 0-4, is incremented by 8 through design hierarchy.  The depth of the hierarchy never reaches levels that cause the parameter value to exceed the bounds of a 32-bit integer.
-  rkv_DW_apb_i2c_bcm21
+  DW_apb_i2c_bcm21
    #(WIDTH, F_SYNC_TYPE+8, VERIF_EN, SVA_TYPE) U_SYNC (
 // spyglass enable_block SelfDeterminedExpr-ML
       .clk_d(clk_d),

@@ -1,7 +1,9 @@
-export TEST_NAME ?= mhsa_demo_test
-export TEST_DUT  ?= mhsa
+#export TEST_NAME ?= mhsa_demo_test
+#export TEST_DUT  ?= mhsa
 #export TEST_NAME ?= ahbram_diff_haddr_test
 #export TEST_DUT  ?= ahbram
+export TEST_NAME ?= i2c_quick_reg_access_test
+export TEST_DUT  ?= i2c
 
 export SEED      ?= 1
 VERBOSITY         = UVM_HIGH
@@ -51,6 +53,9 @@ TB_FILES        += -f ${WORK_HOME}/DUT/MHSA/rtl_filelist.f
 else ifeq (${TEST_DUT}, ahbram)
 TB_FILES        += -f ${WORK_HOME}/UVM/tb/ahbram_filelist.f
 TB_FILES        += ${WORK_HOME}/DUT/AHBRAM/ahb_blockram_32.v
+else ifeq (${TEST_DUT}, i2c)
+TB_FILES        += -f ${WORK_HOME}/UVM/tb/i2c_filelist.f
+TB_FILES        += -f ${WORK_HOME}/DUT/I2C/DW_apb_i2c.f
 endif
 
 
@@ -87,7 +92,7 @@ com: ${DPI_LIB_FILE} create_build_dir
 	vcs ${VCS_OPTS} \
 	    -CFLAGS "${CFLAGS} " \
 	    -LDFLAGS "${LDFLAGS}" \
-	    -timescale=1ns/1ns ${TB_FILES} \
+	    -timescale=1ns/1ps ${TB_FILES} \
 	    -l comp.log \
       -DVCSMX_FAST_UVM
 

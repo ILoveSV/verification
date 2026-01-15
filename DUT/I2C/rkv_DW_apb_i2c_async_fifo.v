@@ -32,7 +32,7 @@
 // -------------------------------------------------------------------
 
 
-module rkv_DW_apb_i2c_async_fifo
+module DW_apb_i2c_async_fifo
    (
     pclk,
                                 presetn,
@@ -219,7 +219,7 @@ module rkv_DW_apb_i2c_async_fifo
    // -- Synchronization registers for input from ic_clk domain
    // ----------------------------------------------------------
 
-   rkv_DW_apb_i2c_bcm21
+   DW_apb_i2c_bcm21
     #(
      .F_SYNC_TYPE (`IC_SYNC_DEPTH),
      .VERIF_EN    (`IC_VERIF_EN)
@@ -233,7 +233,7 @@ module rkv_DW_apb_i2c_async_fifo
    );
 
 
-   rkv_DW_apb_i2c_bcm21
+   DW_apb_i2c_bcm21
     #(
      .F_SYNC_TYPE (`IC_SYNC_DEPTH),
      .VERIF_EN    (`IC_VERIF_EN)
@@ -384,7 +384,7 @@ module rkv_DW_apb_i2c_async_fifo
    // ------------------------------------------------------
    // -- Instance of Tx FIFO controller
    // ------------------------------------------------------
-       rkv_DW_apb_i2c_bcm07
+       DW_apb_i2c_bcm07
         #(
            .DEPTH (`IC_TX_BUFFER_DEPTH),
            .ADDR_WIDTH (`TX_ABW),
@@ -447,7 +447,7 @@ module rkv_DW_apb_i2c_async_fifo
    // ------------------------------------------------------
    // -- Instance of Rx FIFO controller
    // ------------------------------------------------------
-       rkv_DW_apb_i2c_bcm07
+       DW_apb_i2c_bcm07
         #(
            .DEPTH (`IC_RX_BUFFER_DEPTH),
            .ADDR_WIDTH (`RX_ABW),
@@ -541,7 +541,7 @@ module rkv_DW_apb_i2c_async_fifo
 
    assign ptx_overflow  = ptx_overflow_i && tx_push_dly; 
 
-   rkv_DW_apb_i2c_regs
+   DW_apb_i2c_regs
     
    #(1)
    U_icrx_overflow_reg (
@@ -558,7 +558,7 @@ module rkv_DW_apb_i2c_async_fifo
    // ----------------------------------------------------------
    assign icrx_overflow_edg = ((icrx_overflow_i == 1'b1) && (icrx_overflow_r == 1'b0));
 
-   rkv_DW_apb_i2c_tog
+   DW_apb_i2c_tog
     
    U_icrx_overflow_tog (
      .clk          (ic_clk),
@@ -568,7 +568,7 @@ module rkv_DW_apb_i2c_async_fifo
    );
 
 
-   rkv_DW_apb_i2c_bcm21
+   DW_apb_i2c_bcm21
     #(
      .F_SYNC_TYPE (`IC_SYNC_DEPTH),
      .VERIF_EN    (`IC_VERIF_EN)

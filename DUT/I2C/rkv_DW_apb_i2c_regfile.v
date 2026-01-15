@@ -94,7 +94,7 @@
 
 
 
-module rkv_DW_apb_i2c_regfile (
+module DW_apb_i2c_regfile (
    pclk
                            ,presetn
                            ,wr_en

@@ -27,7 +27,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-module rkv_DW_apb_i2c_bcm05 (
+module DW_apb_i2c_bcm05 (
         clk,
         rst_n,
         init_n,
@@ -289,7 +289,7 @@ endgenerate
   assign next_error         = next_error_int && init_n;
 
 
-  rkv_DW_apb_i2c_bcm21
+  DW_apb_i2c_bcm21
    #(COUNT_WIDTH, SYNC_DEPTH+8, GRAY_VERIF_EN, 2) U_sync(
     .clk_d(clk),
     .rst_d_n(rst_n),

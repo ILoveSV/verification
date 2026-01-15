@@ -38,7 +38,7 @@
 // -----------------------------------------------------------
 
 
-module rkv_DW_apb_i2c_sync
+module DW_apb_i2c_sync
   (
    ic_rst_n,
                          ic_clk,
@@ -164,7 +164,7 @@ module rkv_DW_apb_i2c_sync
    assign p2icl_ic_enable = ic_enable;
    assign ic_enable_sync = sp2icl_ic_enable_sync;
    assign ic_abort_sync = sp2icl_ic_abort_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -177,7 +177,7 @@ module rkv_DW_apb_i2c_sync
         ,.data_d              (sp2icl_ic_enable_sync)
       );
 
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -195,7 +195,7 @@ module rkv_DW_apb_i2c_sync
    wire      sp2icl_ic_ack_general_call_sync;
    assign p2icl_ic_ack_general_call = ic_ack_general_call;
    assign ic_ack_general_call_sync = sp2icl_ic_ack_general_call_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -217,7 +217,7 @@ module rkv_DW_apb_i2c_sync
       wire   sp2icl_ic_master_sync_inv;
       assign p2icl_ic_master_inv = ic_master_inv;
       assign ic_master_sync_inv = sp2icl_ic_master_sync_inv;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -241,7 +241,7 @@ module rkv_DW_apb_i2c_sync
    wire   sp2icl_ic_hs_sync_inv;
    assign p2icl_ic_hs_inv = ic_hs_inv;
    assign ic_hs_sync_inv = sp2icl_ic_hs_sync_inv;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -259,7 +259,7 @@ module rkv_DW_apb_i2c_sync
    wire      sp2icl_ic_fs_sync;
    assign p2icl_ic_fs = ic_fs;
    assign ic_fs_sync = sp2icl_ic_fs_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -277,7 +277,7 @@ module rkv_DW_apb_i2c_sync
    wire      sp2icl_ic_ss_sync;
    assign p2icl_ic_ss = ic_ss;
    assign ic_ss_sync = sp2icl_ic_ss_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -299,7 +299,7 @@ module rkv_DW_apb_i2c_sync
          wire   sp2icl_ic_10bit_mst_sync_inv;
          assign p2icl_ic_10bit_mst_inv = ic_10bit_mst_inv;
          assign ic_10bit_mst_sync_inv = sp2icl_ic_10bit_mst_sync_inv;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -323,7 +323,7 @@ module rkv_DW_apb_i2c_sync
          assign p2icl_tx_empty_inv = tx_empty_inv;
          assign tx_empty_int_inv = sp2icl_tx_empty_int_inv;
 
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -345,7 +345,7 @@ module rkv_DW_apb_i2c_sync
          wire   sp2icl_ic_10bit_slv_sync_inv;
          assign p2icl_ic_10bit_slv_inv = ic_10bit_slv_inv;
          assign ic_10bit_slv_sync_inv = sp2icl_ic_10bit_slv_sync_inv;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -369,7 +369,7 @@ module rkv_DW_apb_i2c_sync
          wire   sp2icl_ic_rstrt_en_sync_inv;
          assign p2icl_ic_rstrt_en_inv = ic_rstrt_en_inv;
          assign ic_rstrt_en_sync_inv = sp2icl_ic_rstrt_en_sync_inv;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -390,7 +390,7 @@ module rkv_DW_apb_i2c_sync
          wire   sp2icl_ic_slave_en_sync;
          assign p2icl_ic_slave_en = ic_slave_en;
          assign ic_slave_en_sync = sp2icl_ic_slave_en_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -408,7 +408,7 @@ module rkv_DW_apb_i2c_sync
          wire   sp2icl_p_det_ifaddr_sync;
          assign p2icl_p_det_ifaddr = p_det_ifaddr;
          assign p_det_ifaddr_sync = sp2icl_p_det_ifaddr_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),
         .VERIF_EN    (`IC_VERIF_EN)
@@ -440,7 +440,7 @@ module rkv_DW_apb_i2c_sync
    wire [`IC_SDA_HOLD_RS-1:0]         sp2icl_ic_sda_hold_sync;
    assign p2icl_ic_sda_hold = ic_sda_hold;
    assign ic_sda_hold_sync = sp2icl_ic_sda_hold_sync;
-      rkv_DW_apb_i2c_bcm21
+      DW_apb_i2c_bcm21
        #(
         .WIDTH       (`IC_SDA_HOLD_RS), 
         .F_SYNC_TYPE (`IC_SYNC_DEPTH),

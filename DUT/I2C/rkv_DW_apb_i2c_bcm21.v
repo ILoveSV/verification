@@ -28,7 +28,7 @@
 
 
 
-module rkv_DW_apb_i2c_bcm21 (
+module DW_apb_i2c_bcm21 (
     clk_d,
     rst_d_n,
     data_s,
@@ -687,7 +687,7 @@ endgenerate
   generate
     if (SVA_TYPE == 0) begin : GEN_SVATP_EQ_0
     `ifdef DW_MODEL_MISSAMPLES
-      rkv_DW_apb_i2c_bvm02
+      DW_apb_i2c_bvm02
       
         U_CLK_DET (
         .clk         (clk_d        ),
@@ -699,7 +699,7 @@ endgenerate
     `endif
     end
     if (SVA_TYPE == 1) begin : GEN_SVATP_EQ_1
-      rkv_DW_apb_i2c_bvm02
+      DW_apb_i2c_bvm02
       
         U_CLK_DET (
         .clk         (clk_d        ),
@@ -712,7 +712,7 @@ endgenerate
     end
     if (SVA_TYPE == 2) begin : GEN_SVATP_EQ_2
     `ifdef DW_MODEL_MISSAMPLES
-      rkv_DW_apb_i2c_bvm02
+      DW_apb_i2c_bvm02
       
         U_CLK_DET (
         .clk         (clk_d        ),
@@ -727,7 +727,7 @@ endgenerate
   endgenerate
   `else
     `ifdef DW_MODEL_MISSAMPLES
-  rkv_DW_apb_i2c_bvm02
+  DW_apb_i2c_bvm02
    U_CLK_DET (
     .clk         (clk_d        ),
     .rst_n       (rst_d_n      ),
